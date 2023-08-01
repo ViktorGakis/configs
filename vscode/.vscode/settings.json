@@ -1,11 +1,11 @@
 {
   "terminal.integrated.profiles.windows": {
     "venv": {
-      "source": "PowerShell",
+      "source": "powershell",
       "args": [
-        "-NoExit",
-        // "-Command",
-        // "Set-ExecutionPolicy -ExecutionPolicy ByPass -Scope Process",
+        "-noexit",
+        // "-command",
+        // "set-executionpolicy -executionPolicy ByPass -Scope Process",
         "& 'C:\\Users\\JustAnotherBot\\miniconda3\\shell\\condabin\\conda-hook.ps1' ; conda activate 'C:\\Users\\JustAnotherBot\\miniconda3'"
       ]
     }
@@ -23,12 +23,13 @@
   "editor.mouseWheelZoom": true,
   "files.autoSave": "afterDelay",
   "workbench.colorTheme": "One Dark Pro",
-  "liveServer.settings.donotShowInfoMsg": true,
   "notebook.output.textLineLimit": 200,
   "notebook.output.scrolling": true,
   "notebook.formatOnSave.enabled": true,
-  "search.experimental.notebookSearch": true,
   "editor.formatOnSave": true,
+  "[lua]": {
+    "editor.defaultFormatter": "sumneko.lua"
+  },
   "[html]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
@@ -49,14 +50,13 @@
   "editor.foldingMaximumRegions": 65000,
   "terminal.integrated.mouseWheelScrollSensitivity": 0.2,
   "terminal.integrated.fontSize": 14,
-  "window.zoomLevel": 0,
+  "window.zoomLevel": -1,
   "editor.stickyTabStops": false,
   "editor.stickyScroll.enabled": true,
-  "editor.experimental.pasteActions.enabled": true,
   "terminal.integrated.smoothScrolling": true,
   "oneDarkPro.bold": true,
   "oneDarkPro.vivid": true,
-  "python.languageServer": "Pylance",
+  "python.languageServer": "Jedi",
   "isort.check": true,
   "python.linting.enabled": true,
   // "python.terminal.activateEnvironment": true,  
@@ -68,9 +68,9 @@
   "python.analysis.autoImportCompletions": true,
   "python.analysis.completeFunctionParens": true,
   // "python.formatting.provider": "black",
-  "python.analysis.autoFormatStrings":true,
-  "python.analysis.gotoDefinitionInStringLiteral":true,
-  "python.formatting.provider": "none",
+  "python.analysis.autoFormatStrings": true,
+  "python.analysis.gotoDefinitionInStringLiteral": true,
+  "python.formatting.provider": "black",
   "[python]": {
     "editor.defaultFormatter": "ms-python.black-formatter",
     // "editor.defaultFormatter": "ms-python.python",
@@ -114,7 +114,7 @@
     "scrollbarSlider.background": "#670794",
     "scrollbarSlider.activeBackground": "#670794",
     // NOTEBOOK
-    "notebook.cellEditorBackground": "#111111",
+    "notebook.celleditorbackground": "#111111",
     "notebook.editorBackground": "#222029",
     // TERMINAL
     "terminal.background": "#111111",
@@ -217,8 +217,8 @@
         "name": "keyword.control.flow.python",
         "scope": "keyword.control.flow.python",
         "settings": {
-          "foreground": "#C300FF",
-          "fontStyle": "italic bold"
+          "foreground": "#c300ff",
+          "fontstyle": "italic bold"
         }
       },
       {
@@ -293,6 +293,36 @@
     "./FastAPP"
   ],
   "jupyter.interactiveWindow.codeLens.enable": true,
+  "emmet.triggerExpansionOnTab": true,
+  "files.associations": {
+    "*html": "html",
+    "*njk": "html"
+  },
+  // https://bobbyhadz.com/blog/emmet-not-working-in-vscode#:~:text=The%20issue%20where%20Emmet%20doesn,Shift%20%2B%20P%20on%20macOS).
+  "emmet.useInlineCompletions": true,
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact",
+    "typescript": "typescriptreact",
+    "vue-html": "html",
+    "vue": "html",
+    "razor": "html",
+    "plaintext": "pug",
+    "django-html": "html"
+  },
+  "emmet.showSuggestionsAsSnippets": true,
+  "emmet.showExpandedAbbreviation": "always",
+  "extensions.experimental.affinity": {
+    "asvetliakov.vscode-neovim": 1
+  },
+  "vscode-neovim.neovimExecutablePaths.win32": "C:/Program Files/nvim-win64/bin/nvim.exe",
+  "editor.lineNumbers": "relative",
+  "vscode-neovim.neovimInitVimPaths.win32": "C:\\Users\\JustAnotherBot\\AppData\\Local\\nvim\\init.lua",
+  "vsintellicode.features.python.deepLearning": "enabled",
+  "vscode-neovim.useCtrlKeysForInsertMode": true,
+  "vscode-neovim.useCtrlKeysForNormalMode": true,
+  "vscode-neovim.logOutputToConsole": true,
+  "vscode-neovim.mouseSelectionStartVisualMode": true,
+  "vscode-neovim.revealCursorScrollLine": false,
 }
 // https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-7.2
 // https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-7.2
