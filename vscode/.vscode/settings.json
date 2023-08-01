@@ -1,0 +1,298 @@
+{
+  "terminal.integrated.profiles.windows": {
+    "venv": {
+      "source": "PowerShell",
+      "args": [
+        "-NoExit",
+        // "-Command",
+        // "Set-ExecutionPolicy -ExecutionPolicy ByPass -Scope Process",
+        "& 'C:\\Users\\JustAnotherBot\\miniconda3\\shell\\condabin\\conda-hook.ps1' ; conda activate 'C:\\Users\\JustAnotherBot\\miniconda3'"
+      ]
+    }
+  },
+  "terminal.integrated.defaultProfile.windows": "venv",
+  // "terminal.integrated.cwd": "test",
+  "editor.fontSize": 15,
+  "editor.bracketPairColorization.enabled": true,
+  "editor.guides.bracketPairs": true,
+  "editor.guides.bracketPairsHorizontal": true,
+  "editor.wordWrap": "on",
+  "workbench.iconTheme": "material-icon-theme",
+  "editor.suggestSelection": "first",
+  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+  "editor.mouseWheelZoom": true,
+  "files.autoSave": "afterDelay",
+  "workbench.colorTheme": "One Dark Pro",
+  "liveServer.settings.donotShowInfoMsg": true,
+  "notebook.output.textLineLimit": 200,
+  "notebook.output.scrolling": true,
+  "notebook.formatOnSave.enabled": true,
+  "search.experimental.notebookSearch": true,
+  "editor.formatOnSave": true,
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[jquery]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "explorer.confirmDragAndDrop": false,
+  // "notebook.consolidatedRunButton": true,
+  "editor.foldingMaximumRegions": 65000,
+  "terminal.integrated.mouseWheelScrollSensitivity": 0.2,
+  "terminal.integrated.fontSize": 14,
+  "window.zoomLevel": 0,
+  "editor.stickyTabStops": false,
+  "editor.stickyScroll.enabled": true,
+  "editor.experimental.pasteActions.enabled": true,
+  "terminal.integrated.smoothScrolling": true,
+  "oneDarkPro.bold": true,
+  "oneDarkPro.vivid": true,
+  "python.languageServer": "Pylance",
+  "isort.check": true,
+  "python.linting.enabled": true,
+  // "python.terminal.activateEnvironment": true,  
+  "python.analysis.inlayHints.functionReturnTypes": true,
+  "python.analysis.inlayHints.variableTypes": true,
+  "python.linting.pylintEnabled": true,
+  "python.analysis.typeCheckingMode": "basic",
+  "python.linting.lintOnSave": true,
+  "python.analysis.autoImportCompletions": true,
+  "python.analysis.completeFunctionParens": true,
+  // "python.formatting.provider": "black",
+  "python.analysis.autoFormatStrings":true,
+  "python.analysis.gotoDefinitionInStringLiteral":true,
+  "python.formatting.provider": "none",
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.black-formatter",
+    // "editor.defaultFormatter": "ms-python.python",
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": true
+    },
+  },
+  "isort.args": [
+    "--profile",
+    "black",
+  ],
+  // "python.languageServer": "None",
+  // "breadcrumbs.enabled": false,
+  // "editor.codelens":false,
+  // "search.searchOnType":false,
+  // "terminal.integrated.gpuAcceleration": "on",
+  // "editor.accessibilitySupport": "off",
+  "workbench.colorCustomizations": {
+    "editor.selectionBackground": "#f4f5f5",
+    "editor.selectionHighlightBackground": "#f4f5f574",
+    "editor.findMatchBackground": "#090997",
+    "editor.findMatchHighlightBackground": "#e10d0dac",
+    // https://code.visualstudio.com/docs/getstarted/themes
+    // https://code.visualstudio.com/api/references/theme-color
+    // TAB
+    "tab.activeBackground": "#0e0413",
+    // EDITOR
+    "editor.background": "#121313",
+    "editorLineNumber.foreground": "#4e317cc0",
+    "editorBracketMatch.background": "#f6f6f7",
+    "editorBracketMatch.border": "#b005ff",
+    // ACTIVITY BAR
+    "activityBar.background": "#13161d",
+    "activityBar.activeBackground": "#0e0413",
+    "activityBar.activeBorder": "#b005ff",
+    "activityBar.foreground": "#b005ff",
+    // "contrastActiveBorder":"#ae00ff",
+    "contrastBorder": "#050505",
+    "icon.foreground": "#0099ff",
+    "scrollbarSlider.background": "#670794",
+    "scrollbarSlider.activeBackground": "#670794",
+    // NOTEBOOK
+    "notebook.cellEditorBackground": "#111111",
+    "notebook.editorBackground": "#222029",
+    // TERMINAL
+    "terminal.background": "#111111",
+    // "terminal.foreground":"#f3f1ef",
+    "panel.background": "#1d1f1f",
+    "panel.border": "#b005ff",
+    // MENU
+    "menubar.selectionBackground": "#670794",
+    "menu.foreground": "#fafafa",
+    "menu.background": "#151616",
+    "menu.selectionBorder": "#b005ff",
+    "menu.border": "#b005ff",
+    "menubar.selectionBorder": "#b005ff",
+    //SIDEBAR
+    // "sideBar.foreground": "#0099ff",
+    // "sideBarSectionHeader.foreground": "#0099ff",
+    // "sideBarSectionHeader.background": "#ff0000"
+    // "sideBarSectionHeader.border": "#670794",
+    "sideBar.background": "#1d1f1f",
+    // STATUSBAR
+    "statusBar.background": "#302d31",
+    // "statusBar.border": "#7f01b9",
+    "statusBar.foreground": "#0099ff",
+    "statusBarItem.remoteBackground": "#7f01b9",
+    // "statusBar.foreground":"#7ba3fa"
+    // TTITLE BAR
+    "titleBar.activeBackground": "#13161d",
+    "titleBar.activeForeground": "#9da5b4",
+  },
+  "editor.semanticTokenColorCustomizations": {
+    // https://code.visualstudio.com/api/language-extensions/semantic-highlight-guide
+    "enabled": true,
+    "rules": {
+      // "magicFunction:python": "#ee0000",
+      // "function.declaration:python": "#990000",
+      // "*.decorator:python": "#0000dd",
+      // "*.typeHint:python": "#dfc5f8",
+      // "*.typeHintComment:python": "#aaaaaa",
+      // "parameter:python": "#ff0000",
+      "selfParameter": {
+        "foreground": "#117bac",
+        "fontStyle": "italic"
+      },
+      "variable": "#a84aff",
+      "parameter": "#a84aff",
+      "class": "#00b7ff",
+      "property": "#5560ff",
+      "builtinConstant": "#8a1a1a"
+      // "function":"#4a56ff",
+      // "method":"#d4136d",
+    },
+  },
+  "editor.tokenColorCustomizations": {
+    "textMateRules": [
+      {
+        "name": "string",
+        "scope": "string",
+        "settings": {
+          "foreground": "#76aa68",
+        }
+      },
+      {
+        "name": "variable.parameter",
+        "scope": "variable.parameter",
+        "settings": {
+          "foreground": "#a84aff",
+        }
+      },
+      {
+        "name": "meta.attribute.python",
+        "scope": "meta.attribute.python",
+        "settings": {
+          "foreground": "#5560ff",
+        }
+      },
+      {
+        "name": "Keyword Control",
+        "scope": "keyword.control",
+        "settings": {
+          // "foreground": "#00b7ff",
+          // "foreground": "#e5c07b",
+          "foreground": "#d4136d",
+        }
+      },
+      {
+        "name": "keyword.operator.logical.python",
+        "scope": "keyword.operator.logical.python",
+        "settings": {
+          "foreground": "#d4136d"
+        }
+      },
+      {
+        "name": "keyword.control.import.python",
+        "scope": "keyword.control.import.python",
+        "settings": {
+          "foreground": "#C300FF",
+        }
+      },
+      {
+        "name": "keyword.control.flow.python",
+        "scope": "keyword.control.flow.python",
+        "settings": {
+          "foreground": "#C300FF",
+          "fontStyle": "italic bold"
+        }
+      },
+      {
+        "name": "Storage",
+        "scope": "storage",
+        "settings": {
+          "foreground": "#C300FF",
+          "fontStyle": "italic bold"
+        }
+      },
+      {
+        "name": "support.variable.magic.python",
+        "scope": "support.variable.magic.python",
+        "settings": {
+          "foreground": "#d4136d",
+        }
+      },
+      {
+        "name": "Support",
+        "scope": "support.function",
+        "settings": {
+          "foreground": "#417c83"
+        }
+      },
+      {
+        "name": "Functions",
+        "scope": [
+          "entity.name.function",
+          "meta.require",
+          "support.function.any-method",
+          "variable.function"
+        ],
+        "settings": {
+          "foreground": "#5560ff",
+          "fontStyle": "bold"
+        }
+      },
+      {
+        "name": "python function-call.generic",
+        "scope": "meta.function-call.generic.python",
+        "settings": {
+          "foreground": "#5560ff",
+          "fontStyle": "bold"
+        }
+      },
+      {
+        "name": "Namespaces",
+        "scope": "entity.name.namespace",
+        "settings": {
+          // "foreground": "#e5c07b"
+          "foreground": "#00b7ff"
+        }
+      },
+      {
+        "name": "Variables",
+        "scope": "variable",
+        "settings": {
+          "foreground": "#992cff",
+        }
+      },
+      // {
+      //   "name": "Strings",
+      //   "scope": "string",
+      //   "settings": {
+      //     "foreground": "#bebebe"
+      //   }
+      // },
+    ]
+  },
+  "python.analysis.extraPaths": [
+    "C:/GitHub/ViktorGakis/job_seeker/job_seeker",
+    "./FastAPP"
+  ],
+  "jupyter.interactiveWindow.codeLens.enable": true,
+}
+// https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-7.2
+// https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-7.2
