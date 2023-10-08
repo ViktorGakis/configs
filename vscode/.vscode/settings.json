@@ -1,18 +1,7 @@
 {
-  "terminal.integrated.profiles.windows": {
-    "venv": {
-      "source": "powershell",
-      "args": [
-        "-noexit",
-        // "-command",
-        // "set-executionpolicy -executionPolicy ByPass -Scope Process",
-        "& 'C:\\Users\\JustAnotherBot\\miniconda3\\shell\\condabin\\conda-hook.ps1' ; conda activate 'C:\\Users\\JustAnotherBot\\miniconda3'"
-      ]
-    }
-  },
-  "terminal.integrated.defaultProfile.windows": "venv",
   // "terminal.integrated.cwd": "test",
-  "editor.fontSize": 15,
+  "terminal.integrated.defaultProfile.windows": "venv",
+  "editor.fontSize": 17,
   "editor.bracketPairColorization.enabled": true,
   "editor.guides.bracketPairs": true,
   "editor.guides.bracketPairsHorizontal": true,
@@ -50,22 +39,25 @@
   "editor.foldingMaximumRegions": 65000,
   "terminal.integrated.mouseWheelScrollSensitivity": 0.2,
   "terminal.integrated.fontSize": 14,
-  "window.zoomLevel": -1,
+  "window.zoomLevel": 0,
   "editor.stickyTabStops": false,
   "editor.stickyScroll.enabled": true,
   "terminal.integrated.smoothScrolling": true,
+  "editor.inlineSuggest.enabled": true,
+  "breadcrumbs.enabled": false,
   "oneDarkPro.bold": true,
   "oneDarkPro.vivid": true,
-  "python.languageServer": "Jedi",
+  "python.languageServer": "Pylance",
   "isort.check": true,
   "python.linting.enabled": true,
-  // "python.terminal.activateEnvironment": true,  
+  // "python.terminal.activateEnvironment": true,
   "python.analysis.inlayHints.functionReturnTypes": true,
   "python.analysis.inlayHints.variableTypes": true,
   "python.linting.pylintEnabled": true,
   "python.analysis.typeCheckingMode": "basic",
   "python.linting.lintOnSave": true,
   "python.analysis.autoImportCompletions": true,
+  "python.analysis.fixAll": ["source.unusedImports"],
   "python.analysis.completeFunctionParens": true,
   // "python.formatting.provider": "black",
   "python.analysis.autoFormatStrings": true,
@@ -321,8 +313,10 @@
   "vscode-neovim.useCtrlKeysForInsertMode": true,
   "vscode-neovim.useCtrlKeysForNormalMode": true,
   "vscode-neovim.logOutputToConsole": true,
-  "vscode-neovim.mouseSelectionStartVisualMode": true,
   "vscode-neovim.revealCursorScrollLine": false,
+  "python.analysis.inlayHints.callArgumentNames": true,
+  "notebook.stickyScroll.enabled": true,
+  "search.experimental.closedNotebookRichContentResults": true
 }
 // https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-7.2
 // https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-7.2
