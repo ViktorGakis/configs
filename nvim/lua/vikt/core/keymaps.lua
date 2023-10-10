@@ -68,7 +68,7 @@ map("n", "<C-z>", "<nop>")
 
 -- NVIMTREE
 -- -- toggle
-map("n", "<C-n>", "<cmd> NvimTreeToggle <CR>", { desc = "Toggle nvimtree" })
+map("n", "<C-b>", "<cmd> NvimTreeToggle <CR>", { desc = "Toggle nvimtree" })
 -- focus
 map("n", "<leader>e", "<cmd> NvimTreeFocus <CR>", { desc = "Focus nvimtree" })
 
