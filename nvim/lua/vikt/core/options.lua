@@ -49,8 +49,8 @@ g.rust_recommended_style = false
 g.targets_nl = "nh"
 
 o.clipboard = "unnamedplus"
-o.timeoutlen = 500
-o.updatetime = 200
+-- o.timeoutlen = 500
+-- o.updatetime = 200
 o.backup = false
 o.writebackup = false
 o.undofile = true
