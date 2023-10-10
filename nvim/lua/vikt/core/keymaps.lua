@@ -20,12 +20,12 @@ map("i", "<C-k>", "<Up>", { desc = "Move up" })
 
 -- clear search highlights
 map("n", "<Esc>", ":nohl<CR>", { desc = "Clear search highlights" })
-
+-- switch between windows
 map("n", "<C-h>", "<C-w>h", { desc = "Window left" })
 map("n", "<C-l>", "<C-w>l", { desc = "Window right" })
 map("n", "<C-j>", "<C-w>j", { desc = "Window down" })
 map("n", "<C-k>", "<C-w>k", { desc = "Window up" })
-
+-- Allow moving cursor through wrapped lines
 map("n", "j", 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', { desc = "Move down", expr = true })
 map("n", "k", 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', { desc = "Move up", expr = true })
 map("n", "<Up>", 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', { desc = "Move up", expr = true })
@@ -66,6 +66,11 @@ map("n", "<C-z>", "<nop>")
 -- -- toggle
 map("n", "<C-n>", "<cmd> NvimTreeToggle <CR>", { desc = "Toggle nvimtree" })
 
+-- focus
+map("n", "<leader>e", "<cmd> NvimTreeFocus <CR>", { desc = "Focus nvimtree" })
+-- refres  fil  explore
+map("n", "<leader>er", "<cmd>NvimTreeRefresh<CR>", { desc = "Refresh file explorer" })
+
 -- TELESCOPE KEYMAPS
 map("n", "<leader>ff", "<cmd> Telescope find_files <CR>", { desc = "Find files" })
 map("n", "<leader>fa", "<cmd> Telescope find_files follow=true no_ignore=true hidden=true <CR>", { desc = "Find all" })
@@ -94,7 +99,22 @@ map("n", "<leader>b", "<cmd> enew <CR>", { desc = "New buffer" })
 map("n", "<leader>ch", "<cmd> NvCheatsheet <CR>", { desc = "Mapping cheatsheet" })
 
 map("n", "<leader>sm", "<cmd>MaximizerToggle<CR>", { desc = "Maximize/minimize a split" })
--- focus
-map("n", "<leader>e", "<cmd> NvimTreeFocus <CR>", { desc = "Focus nvimtree" })
 
-map("n", "<leader>er", "<cmd>NvimTreeRefresh<CR>", { desc = "Refresh file explorer" }) -- refres  fil  explore
+-- Don't copy the replaced text after pasting in visual mode
+-- https://vim.fandom.com/wiki/Replace_a_word_with_yanked_text#Alternative_mapping_for_paste
+map("x", "p", 'p:let @+=@0<CR>:let @"=@0<CR>', { desc = "Dont copy replaced text", silent = true })
+
+-- TABUFLINE
+--
+-- cycle through buffers
+map("n", "<tab>", function()
+    require("nvchad.tabufline").tabuflineNext()
+end, { desc = "Goto next buffer" })
+
+map("n", "<S-tab>", function()
+    require("nvchad.tabufline").tabuflinePrev()
+end, { desc = "Goto prev buffer" })
+-- close buffer + hide terminal buffer
+map("n", "<leader>x", function()
+    require("nvchad.tabufline").close_buffer()
+end, { desc = "Close buffer" })
