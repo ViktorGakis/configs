@@ -31,12 +31,9 @@ map("n", "<Down>", 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', { desc = "Mov
 map("n", "<leader>b", "<cmd> enew <CR>", { desc = "New buffer" })
 map("n", "<leader>ch", "<cmd> NvCheatsheet <CR>", { desc = "Mapping cheatsheet" })
 
-local function format_func()
-    vim.lsp.buf.format({ async = true })
-end
 
-map("n", "<leader>fm", format_func, { desc = "LSP formatting" })
-map("n", "<C-s>", "<leader>fm><cmd> w <CR>", { desc = "Format and Save" })
+-- map("n", "<leader>fm", format_func, { desc = "LSP formatting" })
+map("n", "<C-s>", "<leader>mp<cmd> w <CR>", { desc = "Format and Save" })
 -- delete single character without copying into register
 -- keymap.set("n", "x", '"_x')
 
@@ -92,3 +89,6 @@ map("n", "<leader>pt", "<cmd> Telescope terms <CR>", { desc = "Pick hidden term"
 map("n", "<leader>th", "<cmd> Telescope themes <CR>", { desc = "Nvchad themes" })
 
 map("n", "<leader>ma", "<cmd> Telescope marks <CR>", { desc = "telescope bookmarks" })
+
+map("n", "<leader>wr", "<cmd>SessionRestore<CR>", { desc = "Restore session for cwd" }) -- restore last workspace session for current directory
+map("n", "<leader>ws", "<cmd>SessionSave<CR>", { desc = "Save session for auto session root dir" }) -- save workspace session for current working directory
