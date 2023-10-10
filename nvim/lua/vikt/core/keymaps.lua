@@ -23,8 +23,6 @@ map("n", "<C-l>", "<C-w>l", { desc = "Window right" })
 map("n", "<C-j>", "<C-w>j", { desc = "Window down" })
 map("n", "<C-k>", "<C-w>k", { desc = "Window up" })
 
--- map("n", "<C-s>", "<cmd> w <CR>", { desc = "Save file" })
---
 map("n", "j", 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', { desc = "Move down", expr = true })
 map("n", "k", 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', { desc = "Move up", expr = true })
 map("n", "<Up>", 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', { desc = "Move up", expr = true })
@@ -38,7 +36,7 @@ local function format_func()
 end
 
 map("n", "<leader>fm", format_func, { desc = "LSP formatting" })
-map("", "<C-s>", "<leader>fm><cmd> w <CR>", { desc = "Format and Save" })
+map("n", "<C-s>", "<leader>fm><cmd> w <CR>", { desc = "Format and Save" })
 -- delete single character without copying into register
 -- keymap.set("n", "x", '"_x')
 
