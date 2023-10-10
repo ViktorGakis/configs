@@ -28,10 +28,6 @@ map("n", "k", 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', { desc = "Move up"
 map("n", "<Up>", 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', { desc = "Move up", expr = true })
 map("n", "<Down>", 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', { desc = "Move down", expr = true })
 
-map("n", "<leader>b", "<cmd> enew <CR>", { desc = "New buffer" })
-map("n", "<leader>ch", "<cmd> NvCheatsheet <CR>", { desc = "Mapping cheatsheet" })
-
-
 -- map("n", "<leader>fm", format_func, { desc = "LSP formatting" })
 map("n", "<C-s>", "<leader>mp<cmd> w <CR>", { desc = "Format and Save" })
 -- delete single character without copying into register
@@ -66,8 +62,6 @@ map("n", "<C-z>", "<nop>")
 -- NVIMTREE
 -- -- toggle
 map("n", "<C-n>", "<cmd> NvimTreeToggle <CR>", { desc = "Toggle nvimtree" })
--- focus
-map("n", "<leader>e", "<cmd> NvimTreeFocus <CR>", { desc = "Focus nvimtree" })
 
 -- TELESCOPE KEYMAPS
 map("n", "<leader>ff", "<cmd> Telescope find_files <CR>", { desc = "Find files" })
@@ -92,3 +86,11 @@ map("n", "<leader>ma", "<cmd> Telescope marks <CR>", { desc = "telescope bookmar
 
 map("n", "<leader>wr", "<cmd>SessionRestore<CR>", { desc = "Restore session for cwd" }) -- restore last workspace session for current directory
 map("n", "<leader>ws", "<cmd>SessionSave<CR>", { desc = "Save session for auto session root dir" }) -- save workspace session for current working directory
+--
+map("n", "<leader>b", "<cmd> enew <CR>", { desc = "New buffer" })
+map("n", "<leader>ch", "<cmd> NvCheatsheet <CR>", { desc = "Mapping cheatsheet" })
+
+-- focus
+map("n", "<leader>e", "<cmd> NvimTreeFocus <CR>", { desc = "Focus nvimtree" })
+
+map("n", "<leader>er", "<cmd>NvimTreeRefresh<CR>", { desc = "Refresh file explorer" }) -- refresh file explorer
