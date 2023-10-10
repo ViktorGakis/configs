@@ -1,6 +1,9 @@
 -- set leader key to space
 local map = vim.keymap.set
+local g = vim.g
 
+g.mapleader = " "
+g.maplocalleader = " "
 ---------------------
 -- General Keymaps -------------------
 
@@ -31,17 +34,17 @@ map("n", "<Down>", 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', { desc = "Mov
 -- map("n", "<leader>fm", format_func, { desc = "LSP formatting" })
 map("n", "<C-s>", "<leader>mp<cmd> w <CR>", { desc = "Format and Save" })
 -- delete single character without copying into register
--- keymap.set("n", "x", '"_x')
+map("n", "x", '"_x')
 
 -- increment/decrement numbers
 map("n", "<leader>+", "<C-a>", { desc = "Increment number" }) -- increment
 map("n", "<leader>-", "<C-x>", { desc = "Decrement number" }) -- decrement
 
 -- window management
-map("n", "<leader>sv", "<C-w>v", { desc = "Split window vertically" }) -- split window vertically
-map("n", "<leader>sh", "<C-w>s", { desc = "Split window horizontally" }) -- split window horizontally
-map("n", "<leader>se", "<C-w>=", { desc = "Make splits equal size" }) -- make split windows equal width & height
-map("n", "<leader>sx", "<cmd>close<CR>", { desc = "Close current split" }) -- close current split window
+map("n", "<leader>wv", "<C-w>v", { desc = "Split window vertically" }) -- split window vertically
+map("n", "<leader>wh", "<C-w>s", { desc = "Split window horizontally" }) -- split window horizontally
+map("n", "<leader>we", "<C-w>=", { desc = "Make splits equal size" }) -- make split windows equal width & eight
+map("n", "<leader>wx", "<cmd>close<CR>", { desc = "Close current split" }) -- close current split window
 
 map("n", "<leader>to", "<cmd>tabnew<CR>", { desc = "Open new tab" }) -- open new tab
 map("n", "<leader>tx", "<cmd>tabclose<CR>", { desc = "Close current tab" }) -- close current tab
@@ -90,7 +93,8 @@ map("n", "<leader>ws", "<cmd>SessionSave<CR>", { desc = "Save session for auto s
 map("n", "<leader>b", "<cmd> enew <CR>", { desc = "New buffer" })
 map("n", "<leader>ch", "<cmd> NvCheatsheet <CR>", { desc = "Mapping cheatsheet" })
 
+map("n", "<leader>sm", "<cmd>MaximizerToggle<CR>", { desc = "Maximize/minimize a split" })
 -- focus
 map("n", "<leader>e", "<cmd> NvimTreeFocus <CR>", { desc = "Focus nvimtree" })
 
-map("n", "<leader>er", "<cmd>NvimTreeRefresh<CR>", { desc = "Refresh file explorer" }) -- refresh file explorer
+map("n", "<leader>er", "<cmd>NvimTreeRefresh<CR>", { desc = "Refresh file explorer" }) -- refres  fil  explore
