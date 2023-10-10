@@ -109,3 +109,15 @@ end, { desc = "Goto prev buffer" })
 map("n", "<leader>x", function()
     require("nvchad.tabufline").close_buffer()
 end, { desc = "Close buffer" })
+
+-- comment
+map("n", "<leader>/", function()
+    require("Comment.api").toggle.linewise.current()
+end, { desc = "Toggle comment" })
+
+map(
+    "v",
+    "<leader>/",
+    "<ESC><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>",
+    { desc = "Toggle comment" }
+)
