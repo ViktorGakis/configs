@@ -110,7 +110,8 @@ map("n", "<leader>x", function()
     require("nvchad.tabufline").close_buffer()
 end, { desc = "Close buffer" })
 
--- comment
+---- comment
+--
 map("n", "<leader>/", function()
     require("Comment.api").toggle.linewise.current()
 end, { desc = "Toggle comment" })
@@ -121,3 +122,11 @@ map(
     "<ESC><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>",
     { desc = "Toggle comment" }
 )
+
+---- Python dap
+---
+map("n", "<leader>db", "<cmd> DapToggleBreakpoint <CR>", { desc = "Toggles Breakpoint" })
+
+map("n", "<leader>dpr", function()
+    require("dap-python").test_method()
+end, { desc = "Python Dap Test Method" })
