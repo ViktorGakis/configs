@@ -13,6 +13,12 @@ map("n", "<leader>O", "O<ESC>")
 map("n", "<C-c>", "<cmd> %y+ <CR>", { desc = "Copy whole file" })
 map("n", "<C-z>", "<nop>")
 
+map(
+    "v",
+    "<C-p>",
+    ":lua local reg_content = vim.fn.getreg() vim.cmd('normal \"_d') vim.fn.setreg('\"', reg_content) vim.cmd('normal p')<CR>",
+    { noremap = true, silent = true }
+)
 -- Don't copy the replaced text after pasting in visual mode
 -- https://vim.fandom.com/wiki/Replace_a_word_with_yanked_text#Alternative_mapping_for_paste
 map("x", "p", 'p:let @+=@0<CR>:let @"=@0<CR>', { desc = "Dont copy replaced text", silent = true })
@@ -41,6 +47,12 @@ map("n", "<C-h>", "<C-w>h", { desc = "Window left" })
 map("n", "<C-l>", "<C-w>l", { desc = "Window right" })
 map("n", "<C-j>", "<C-w>j", { desc = "Window down" })
 map("n", "<C-k>", "<C-w>k", { desc = "Window up" })
+
+map("n", "<C-h>", "<cmd> TmuxNavigateLeft<CR>", { desc = "Window left" })
+map("n", "<C-l>", "", { desc = "Window right" })
+map("n", "<C-j>", "<C-w>j", { desc = "Window down" })
+map("n", "<C-k>", "<C-w>k", { desc = "Window up" })
+
 -- Allow moving cursor through wrapped lines
 map("n", "j", 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', { desc = "Move down", expr = true })
 map("n", "k", 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', { desc = "Move up", expr = true })
