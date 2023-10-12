@@ -21,3 +21,4 @@ autocmd("FileType", {
         vim.opt_local.buflisted = false
     end,
 })
+
