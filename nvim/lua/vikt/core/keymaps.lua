@@ -44,15 +44,15 @@ map("i", "<C-k>", "<Up>", { desc = "Move up" })
 -- clear search highlights
 map("n", "<Esc>", ":nohl<CR>", { desc = "Clear search highlights" })
 -- switch between windows
-map("n", "<C-h>", "<C-w>h", { desc = "Window left" })
-map("n", "<C-l>", "<C-w>l", { desc = "Window right" })
-map("n", "<C-j>", "<C-w>j", { desc = "Window down" })
-map("n", "<C-k>", "<C-w>k", { desc = "Window up" })
+-- map("n", "<C-h>", "<C-w>h", { desc = "Window left" })
+-- map("n", "<C-l>", "<C-w>l", { desc = "Window right" })
+-- map("n", "<C-j>", "<C-w>j", { desc = "Window down" })
+-- map("n", "<C-k>", "<C-w>k", { desc = "Window up" })
 
-map("n", "<C-h>", "<cmd> TmuxNavigateLeft<CR>", { desc = "Window left" })
-map("n", "<C-l>", "", { desc = "Window right" })
-map("n", "<C-j>", "<C-w>j", { desc = "Window down" })
-map("n", "<C-k>", "<C-w>k", { desc = "Window up" })
+map("n", "<C-h>", "<cmd> TmuxNavigateLeft<CR>", { desc = "Tmux Window left" })
+map("n", "<C-l>", "<cmd> TmuxNavigateRight<CR>", { desc = "Tmux Window right" })
+map("n", "<C-j>", "<cmd> TmuxNavigateDown<CR>", { desc = "Tmux Window down" })
+map("n", "<C-k>", "<cmd> TmuxNavigateUp<CR>", { desc = "Tmux Window up" })
 
 -- Allow moving cursor through wrapped lines
 map("n", "j", 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', { desc = "Move down", expr = true })
