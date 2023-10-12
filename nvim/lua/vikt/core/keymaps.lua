@@ -17,7 +17,7 @@ map(
     "v",
     "<C-p>",
     ":lua local reg_content = vim.fn.getreg() vim.cmd('normal \"_d') vim.fn.setreg('\"', reg_content) vim.cmd('normal p')<CR>",
-    { noremap = true, silent = true }
+    { desc = "Replace + Preserve pasting", noremap = true, silent = true }
 )
 -- Don't copy the replaced text after pasting in visual mode
 -- https://vim.fandom.com/wiki/Replace_a_word_with_yanked_text#Alternative_mapping_for_paste
@@ -25,6 +25,7 @@ map("x", "p", 'p:let @+=@0<CR>:let @"=@0<CR>', { desc = "Dont copy replaced text
 
 -- map("n", "<leader>fm", format_func, { desc = "LSP formatting" })
 map("n", "<C-s>", "<leader>mp<cmd> w <CR>", { desc = "Format and Save" })
+map("i", "<C-s>", "<ESC><leader>mp<cmd> w <CR>i", { desc = "Format and Save" })
 -- delete single character without copying into register
 map("n", "x", '"_x')
 -- General Keymaps -------------------
