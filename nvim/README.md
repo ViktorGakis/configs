@@ -1,19 +1,18 @@
-```bash
+````bash
 
-:# If ~/.config/nvim exists, remove it
-
+# If ~/.config/nvim exists, remove it
 [ -d ~/.config/nvim ] && rm -rf ~/.config/nvim
 
-# Clone the entire repo directly into ~/.config
+# If ~/.local/share/nvim exists, remove it
+[ -d ~/.local/share/nvim ] && rm -rf ~/.local/share/nvim
 
+# Clone the entire repo directly into ~/.config
 git clone --depth 1 https://github.com/ViktorGakis/dotfiles.git ~/.config_temp
 
 # Move all the content from the temp cloned directory to ~/.config
-
-mv ~/.config*temp/* ~/.config*temp/.[!.]* ~/.config/
+mv ~/.config_temp/* ~/.config_temp/.[!.]* ~/.config/
 
 # Remove the temporary directory
-
 rm -rf ~/.config_temp
 
 ```
@@ -25,3 +24,4 @@ rm -rf ~/.config_temp
 3. fix raindow indent
 4. fix indent key map
 5. configure properly ruff_lsp
+````
