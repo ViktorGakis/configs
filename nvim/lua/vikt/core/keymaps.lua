@@ -28,6 +28,9 @@ map("n", "<C-s>", "<leader>mp<cmd> w <CR>", { desc = "Format and Save" })
 map("i", "<C-s>", "<ESC><leader>mp<cmd> w <CR>i", { desc = "Format and Save" })
 -- delete single character without copying into register
 map("n", "x", '"_x')
+
+map("i", "M-BS", "<cmd>norm! db<CR>a")
+
 -- General Keymaps -------------------
 
 -- use jk to exit insert mode
@@ -87,7 +90,7 @@ map("n", "<leader>fw", "<cmd> Telescope live_grep <CR>", { desc = "Live grep" })
 map("n", "<leader>fb", "<cmd> Telescope buffers <CR>", { desc = "Find buffers" })
 map("n", "<leader>fh", "<cmd> Telescope help_tags <CR>", { desc = "Help page" })
 map("n", "<leader>fo", "<cmd> Telescope oldfiles <CR>", { desc = "Find oldfiles" })
-map("n", "<leader>fz", "<cmd> Telescope current_buffer_fuzzy_find <CR>", { desc = "Find {desc=in current buffer" })
+map("n", "<leader>fz", "<cmd> Telescope current_buffer_fuzzy_find <CR>", { desc = "Find in current buffer" })
 
 ---- git
 map("n", "<leader>cm", "<cmd> Telescope git_commits <CR>", { desc = "Git commits" })
