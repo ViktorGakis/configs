@@ -4,8 +4,7 @@
 [ -d ~/.config/vscode ] && rm -rf ~/.config/vscode
 [ -d ~/.config/.git ] && rm -rf ~/.config/.git
 
-[ -d ~/.config_temp] && rm -rf ~/.config_temp
-
+[ -d ~/.config_temp/ ] && rm -rf ~/.config_temp/
 # Clone the entire repo directly into ~/.config
 git clone --depth 1 https://github.com/ViktorGakis/dotfiles.git ~/.config_temp
 
