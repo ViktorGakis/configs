@@ -27,4 +27,6 @@ rm -rf ~/.config_temp
 2. add switcher
 3. fix raindow indent
 4. configure java
+5. configure tmux settings
+```
 ````
