@@ -1,4 +1,4 @@
-````bash
+```bash
 
 # If ~/.config/nvim exists, remove it
 [ -d ~/.config/nvim ] && rm -rf ~/.config/nvim
@@ -28,5 +28,3 @@ rm -rf ~/.config_temp
 3. fix raindow indent
 4. configure java
 5. configure tmux settings
-```
-````
