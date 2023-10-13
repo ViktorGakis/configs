@@ -1,4 +1,4 @@
-`bash
+```bash
 
 :# If ~/.config/nvim exists, remove it
 
@@ -15,7 +15,8 @@ mv ~/.config*temp/* ~/.config*temp/.[!.]* ~/.config/
 # Remove the temporary directory
 
 rm -rf ~/.config_temp
-`
+
+```
 
 # TODO
 
