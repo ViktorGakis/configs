@@ -6,7 +6,7 @@
 
 [ -d ~/.config_temp/ ] && rm -rf ~/.config_temp/
 # Clone the entire repo directly into ~/.config
-git clone --depth 1 https://github.com/ViktorGakis/dotfiles.git ~/.config_temp
+# git clone --depth 1 https://github.com/ViktorGakis/dotfiles.git ~/.config_temp
 
 # Move all the content from the temp cloned directory to ~/.config
 mv ~/.config_temp/* ~/.config_temp/.[!.]* ~/.config/
