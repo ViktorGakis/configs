@@ -70,6 +70,27 @@ return {
             vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
         end
 
+        -- configure lua server (with special settings)
+        lspconfig["lua_ls"].setup({
+            capabilities = capabilities,
+            on_attach = on_attach,
+            settings = { -- custom settings for lua
+                Lua = {
+                    -- make the language server recognize "vim" global
+                    diagnostics = {
+                        globals = { "vim" },
+                    },
+                    workspace = {
+                        -- make language server aware of runtime files
+                        library = {
+                            [vim.fn.expand("$VIMRUNTIME/lua")] = true,
+                            [vim.fn.stdpath("config") .. "/lua"] = true,
+                        },
+                    },
+                },
+            },
+        })
+
         -- configure html server
         lspconfig["html"].setup({
             capabilities = capabilities,
@@ -149,27 +170,6 @@ return {
             enable_import_completion = true,
             organize_imports_on_format = true,
             filetypes = { "cs", "vb", "csproj", "sln", "slnx", "props" },
-        })
-
-        -- configure lua server (with special settings)
-        lspconfig["lua_ls"].setup({
-            capabilities = capabilities,
-            on_attach = on_attach,
-            settings = { -- custom settings for lua
-                Lua = {
-                    -- make the language server recognize "vim" global
-                    diagnostics = {
-                        globals = { "vim" },
-                    },
-                    workspace = {
-                        -- make language server aware of runtime files
-                        library = {
-                            [vim.fn.expand("$VIMRUNTIME/lua")] = true,
-                            [vim.fn.stdpath("config") .. "/lua"] = true,
-                        },
-                    },
-                },
-            },
         })
     end,
 }
