@@ -86,7 +86,7 @@ map("n", "<leader>wm", "<cmd>MaximizerToggle<CR>", { desc = "Maximize/minimize a
 map("n", "<C-n>", "<cmd> NvimTreeToggle <CR>", { desc = "Toggle nvimtree" })
 map("n", "<leader>e", "<cmd> NvimTreeFocus <CR>", { desc = "Focus nvimtree" })
 map("n", "<leader>er", "<cmd>NvimTreeRefresh<CR>", { desc = "Refresh file explorer" })
-map("n", "<leader>ef", "<cmd>NvimTreeFindFileToggle<CR>", { desc = "Toggle file explorer on current file" })
+map("n", "<leader>ef", "<cmd>NvimTreeFindFile<CR>", { desc = "Toggle file explorer on current file" })
 
 ---- TELESCOPE KEYMAPS
 map("n", "<leader>ff", "<cmd> Telescope find_files <CR>", { desc = "Find files" })
@@ -180,3 +180,4 @@ map("n", "<M-k>", ":m .-2<CR>==", { silent = true })
 -- Better indenting in Visual mode
 map("v", ">", ">gv")
 map("v", "<", "<gv")
+map("n", "<C-a>", "ggVG", { desc = "Select All Lines" })
