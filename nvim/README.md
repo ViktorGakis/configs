@@ -8,8 +8,8 @@ bash ~/.config_temp/setup.sh
 
 # TODO
 
-1. adapt tabufline
-1. add switcher
-1. fix raindow indent
+1. add tabufline
+1. add theme switcher
+1. [fix raindow indent](https://github.com/TheGLander/indent-rainbowline.nvim/issues/1)
 1. configure c#
 1. configure java

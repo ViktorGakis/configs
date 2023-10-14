@@ -158,6 +158,8 @@ map("n", "<leader>cc", function()
     end
 end, { desc = "Jump to current context" })
 
+----NEOGIT
+map("n", "<leader>gs", "<cmd>Neogit kind=vsplit<CR>", { desc = "Open Neogit in vslit" })
 -- to make work
 --
 map("n", "<leader>th", "<cmd> Telescope themes <CR>", { desc = "Nvchad themes" })
