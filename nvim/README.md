@@ -1,7 +1,7 @@
 ```bash
 [ -d ~/.config_temp/ ] && rm -rf ~/.config_temp/
 
-git clone --depth 1 https://github.com/ViktorGakis/dotfiles.git ~/.config_temp
+git clone --depth 1 https://github.com/ViktorGakis/dotfiles.git ~/.config_temp/
 
 bash ~/.config_temp/setup.sh
 ```
