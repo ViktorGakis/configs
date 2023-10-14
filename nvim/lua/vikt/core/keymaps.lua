@@ -12,7 +12,7 @@ map("n", "<leader>o", "o<ESC>")
 map("n", "<leader>O", "O<ESC>")
 map("n", "<C-c>", "<cmd> %y+ <CR>", { desc = "Copy whole file" })
 map("n", "<C-z>", "<nop>")
-
+map("n", "sad", "Adsa")
 map(
     "v",
     "<C-p>",
@@ -33,6 +33,7 @@ map("n", "x", '"_x')
 map("i", "<M-BS>", "<cmd>norm! db<CR><cmd>star!<CR>")
 map("n", "<M-BS>", "db")
 
+map("n", "<leader>ec", "<cmd>e ~/.config/nvim/ <CR>", { desc = "   Configuration" })
 -- General Keymaps -------------------
 
 map("i", "jk", "<ESC>", { desc = "Exit insert mode with jk" })
