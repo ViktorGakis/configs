@@ -142,6 +142,15 @@ return {
             on_attach = on_attach,
         })
 
+        lspconfig["omnisharp"].setup({
+            capabilities = capabilities,
+            on_attach = on_attach,
+            enable_roslyn_analysers = true,
+            enable_import_completion = true,
+            organize_imports_on_format = true,
+            filetypes = { "cs", "vb", "csproj", "sln", "slnx", "props" },
+        })
+
         -- configure lua server (with special settings)
         lspconfig["lua_ls"].setup({
             capabilities = capabilities,

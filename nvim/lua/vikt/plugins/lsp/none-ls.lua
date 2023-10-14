@@ -21,6 +21,7 @@ return {
                 "mypy",
                 "pylint", -- python linter
                 "eslint_d", -- js linter
+                "csharpier",
             },
         })
 
@@ -45,6 +46,7 @@ return {
                 formatting.stylua, -- lua formatter
                 formatting.isort,
                 formatting.black,
+                formatting.csharpier,
                 diagnostics.pylint,
                 diagnostics.eslint_d.with({ -- js/ts linter
                     condition = function(utils)
