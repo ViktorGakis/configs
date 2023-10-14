@@ -80,6 +80,8 @@ map("n", "<leader><tab>", "<cmd>tabn<CR>", { desc = "Go to next tab" })
 map("n", "<leader>tp", "<cmd>tabp<CR>", { desc = "Go to previous tab" })
 map("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer in new tab" })
 
+map("n", "<leader>wm", "<cmd>MaximizerToggle<CR>", { desc = "Maximize/minimize a split" })
+
 ---- NVIMTREE
 map("n", "<C-n>", "<cmd> NvimTreeToggle <CR>", { desc = "Toggle nvimtree" })
 map("n", "<leader>e", "<cmd> NvimTreeFocus <CR>", { desc = "Focus nvimtree" })
@@ -94,15 +96,12 @@ map("n", "<leader>fh", "<cmd> Telescope help_tags <CR>", { desc = "Help page" })
 map("n", "<leader>fo", "<cmd> Telescope oldfiles <CR>", { desc = "Find oldfiles" })
 map("n", "<leader>fz", "<cmd> Telescope current_buffer_fuzzy_find <CR>", { desc = "Find in current buffer" })
 
----- git
+-- git
 map("n", "<leader>cm", "<cmd> Telescope git_commits <CR>", { desc = "Git commits" })
+
 map("n", "<leader>gt", "<cmd> Telescope git_status <CR>", { desc = "Git status" })
 
 map("n", "<leader>pt", "<cmd> Telescope terms <CR>", { desc = "Pick hidden term" })
-
-map("n", "<leader>th", "<cmd> Telescope themes <CR>", { desc = "Nvchad themes" })
-
-map("n", "<leader>ma", "<cmd> Telescope marks <CR>", { desc = "telescope bookmarks" })
 
 ---- Sessions
 map("n", "<leader>wr", "<cmd>SessionRestore<CR>", { desc = "Restore session for cwd" }) -- restore last workspace session for current directory
@@ -110,8 +109,6 @@ map("n", "<leader>ws", "<cmd>SessionSave<CR>", { desc = "Save session for auto s
 --
 map("n", "<leader>b", "<cmd> enew <CR>", { desc = "New buffer" })
 map("n", "<leader>ch", "<cmd> NvCheatsheet <CR>", { desc = "Mapping cheatsheet" })
-
-map("n", "<leader>sm", "<cmd>MaximizerToggle<CR>", { desc = "Maximize/minimize a split" })
 
 -- TABUFLINE
 --
@@ -160,3 +157,9 @@ map("n", "<leader>cc", function()
         vim.cmd([[normal! _]])
     end
 end, { desc = "Jump to current context" })
+
+-- to make work
+--
+map("n", "<leader>th", "<cmd> Telescope themes <CR>", { desc = "Nvchad themes" })
+
+map("n", "<leader>ma", "<cmd> Telescope marks <CR>", { desc = "telescope bookmarks" })
