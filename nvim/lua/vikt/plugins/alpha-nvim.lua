@@ -20,6 +20,7 @@ return {
 
         -- Set menu
         dashboard.section.buttons.val = {
+            dashboard.button("<leader>oc", "Open Config", "<cmd>!cd ~/.config/nvim/<CR>"),
             dashboard.button("e", "  > New File", "<cmd>ene<CR>"),
             dashboard.button("<C-n>", "  > Toggle file explorer", "<cmd>NvimTreeToggle<CR>"),
             dashboard.button("<leader>ff>", "󰱼 > Find File", "<cmd>Telescope find_files<CR>"),

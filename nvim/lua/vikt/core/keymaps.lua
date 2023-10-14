@@ -29,11 +29,12 @@ map("i", "<C-s>", "<ESC><leader>mp<cmd> w <CR>i", { desc = "Format and Save" })
 -- delete single character without copying into register
 map("n", "x", '"_x')
 
-map("i", "M-BS", "<cmd>norm! db<CR>a")
+-- quick back erasing like VSCODE
+map("i", "<M-BS>", "<cmd>norm! db<CR><cmd>star!<CR>")
+map("n", "<M-BS>", "db")
 
 -- General Keymaps -------------------
 
--- use jk to exit insert mode
 map("i", "jk", "<ESC>", { desc = "Exit insert mode with jk" })
 
 map("i", "<C-e>", "<End>", { desc = "End of line" })
