@@ -172,12 +172,12 @@ map("n", "<leader>m1", "<cmd>CellularAutomaton make_it_rain<CR>", { desc = "Liqu
 -- Move current line / block with Alt-j/k a la vscode.
 map("n", "<M-j>", ":m .+1<CR>==", { silent = true })
 map("n", "<M-k>", ":m .-2<CR>==", { silent = true })
+-- map("n", "<C-a>", "ggVG", { desc = "Select All Lines" })
 
 -- Better line / block movement
---map('n', "<A-j>", ":m '>+1<CR>gv-gv", { silent = true })
---map('n', "<A-k>", ":m '<-2<CR>gv-gv", { silent = true })
+-- map("n", "<M-j>", ":m '>+1<CR>gv-gv", { silent = true })
+-- map("n", "<M-k>", ":m '<-2<CR>gv-gv", { silent = true })
 
 -- Better indenting in Visual mode
 map("v", ">", ">gv")
 map("v", "<", "<gv")
-map("n", "<C-a>", "ggVG", { desc = "Select All Lines" })
