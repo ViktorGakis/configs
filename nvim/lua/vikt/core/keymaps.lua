@@ -12,7 +12,6 @@ map("n", "<leader>o", "o<ESC>")
 map("n", "<leader>O", "O<ESC>")
 map("n", "<C-c>", "<cmd> %y+ <CR>", { desc = "Copy whole file" })
 map("n", "<C-z>", "<nop>")
-map("n", "sad", "Adsa")
 map(
     "v",
     "<C-p>",

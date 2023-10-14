@@ -53,6 +53,7 @@ return {
             "SmiteshP/nvim-navic",
             "nvim-tree/nvim-web-devicons", -- optional dependency
         },
+        theme = "tokyonight",
         lazy = true,
     },
     {
@@ -86,4 +87,14 @@ return {
     {
         "szw/vim-maximizer",
     },
+    {
+        "stevearc/aerial.nvim",
+        opts = {},
+        -- Optional dependencies
+        dependencies = {
+            "nvim-treesitter/nvim-treesitter",
+            "nvim-tree/nvim-web-devicons",
+        },
+    },
+    { "rktjmp/lush.nvim" },
 }
