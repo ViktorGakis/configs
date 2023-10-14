@@ -86,6 +86,7 @@ map("n", "<leader>wm", "<cmd>MaximizerToggle<CR>", { desc = "Maximize/minimize a
 map("n", "<C-n>", "<cmd> NvimTreeToggle <CR>", { desc = "Toggle nvimtree" })
 map("n", "<leader>e", "<cmd> NvimTreeFocus <CR>", { desc = "Focus nvimtree" })
 map("n", "<leader>er", "<cmd>NvimTreeRefresh<CR>", { desc = "Refresh file explorer" })
+map("n", "<leader>ef", "<cmd>NvimTreeFindFileToggle<CR>", { desc = "Toggle file explorer on current file" })
 
 ---- TELESCOPE KEYMAPS
 map("n", "<leader>ff", "<cmd> Telescope find_files <CR>", { desc = "Find files" })
@@ -165,3 +166,17 @@ map("n", "<leader>gs", "<cmd>Neogit kind=vsplit<CR>", { desc = "Open Neogit in v
 map("n", "<leader>th", "<cmd> Telescope themes <CR>", { desc = "Nvchad themes" })
 
 map("n", "<leader>ma", "<cmd> Telescope marks <CR>", { desc = "telescope bookmarks" })
+
+map("n", "<leader>m1", "<cmd>CellularAutomaton make_it_rain<CR>", { desc = "Liquify window" })
+
+-- Move current line / block with Alt-j/k a la vscode.
+map("n", "<M-j>", ":m .+1<CR>==", { silent = true })
+map("n", "<M-k>", ":m .-2<CR>==", { silent = true })
+
+-- Better line / block movement
+--map('n', "<A-j>", ":m '>+1<CR>gv-gv", { silent = true })
+--map('n', "<A-k>", ":m '<-2<CR>gv-gv", { silent = true })
+
+-- Better indenting in Visual mode
+map("v", ">", ">gv")
+map("v", "<", "<gv")
