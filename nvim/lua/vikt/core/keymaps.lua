@@ -95,9 +95,10 @@ map("n", "<leader>fb", "<cmd> Telescope buffers <CR>", { desc = "Find buffers" }
 map("n", "<leader>fh", "<cmd> Telescope help_tags <CR>", { desc = "Help page" })
 map("n", "<leader>fo", "<cmd> Telescope oldfiles <CR>", { desc = "Find oldfiles" })
 map("n", "<leader>fz", "<cmd> Telescope current_buffer_fuzzy_find <CR>", { desc = "Find in current buffer" })
-
+map("n", "<leader>fk", "<cmd> Telescope keymaps <CR>", { desc = "Find keymaps" })
+--
 -- git
-map("n", "<leader>cm", "<cmd> Telescope git_commits <CR>", { desc = "Git commits" })
+map("n", "<leader>gm", "<cmd> Telescope git_commits <CR>", { desc = "Git commits" })
 
 map("n", "<leader>gt", "<cmd> Telescope git_status <CR>", { desc = "Git status" })
 
