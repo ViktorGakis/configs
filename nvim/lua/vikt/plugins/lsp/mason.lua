@@ -56,6 +56,7 @@ return {
                 "debugpy",
                 "eslint_d", -- js linter
                 "csharpier",
+                "semgrep",
             },
         })
     end,

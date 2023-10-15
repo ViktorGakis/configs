@@ -22,6 +22,7 @@ return {
                 "pylint", -- python linter
                 "eslint_d", -- js linter
                 "csharpier",
+                "semgrep", -- C# linter
             },
         })
 
