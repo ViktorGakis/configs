@@ -74,3 +74,10 @@ opt.updatetime = 250
 -- go to previous/next line with h,l,left arrow and right arrow
 -- when cursor reaches end/beginning of line
 opt.whichwrap:append("<>[]hl")
+
+-- Highlight on yank
+vim.cmd("au TextYankPost * lua vim.highlight.on_yank {on_visual = false}")
+
+-- Indent blankline
+vim.opt.list = true
+vim.opt.listchars:append("eol:↴")
