@@ -3,8 +3,8 @@ local directions = require("hop.hint").HintDirection
 local map = vim.api.nvim_set_keymap
 hop.setup({ keys = "etovxqpdygfblzhckisuran", case_insensitive = false })
 
-vim.api.nvim_set_keymap("n", "s", ":HopChar2<cr>", { silent = true })
-vim.api.nvim_set_keymap("n", "S", ":HopWord<cr>", { silent = true })
+vim.api.nvim_set_keymap("n", "S", ":HopChar2<cr>", { silent = true })
+vim.api.nvim_set_keymap("n", "s", ":HopWord<cr>", { silent = true })
 vim.keymap.set("", "ls", ":HopLine<CR>", { desc = "Hop Line", silent = true })
 -- char
 vim.keymap.set("", "f", function()
