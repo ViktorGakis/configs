@@ -1,5 +1,7 @@
 local lualine = require("lualine")
 
+local lazy_status = require("lazy.status") -- to configure lazy pending updates count
+
 local function get_lsp_name()
     local msg = "LS Inactive"
     local buf_clients = vim.lsp.get_active_clients()
@@ -11,14 +13,14 @@ local function get_lsp_name()
     end
     -- end
     local buf_client_names = {}
-    local copilot_active = false
+    -- local copilot_active = false
 
     for _, client in pairs(buf_clients) do
         table.insert(buf_client_names, client.name)
 
-        if client.name == "copilot" then
-            copilot_active = true
-        end
+        -- if client.name == "copilot" then
+        --     copilot_active = true
+        -- end
     end
 
     local unique_client_names = vim.fn.uniq(buf_client_names)
@@ -34,9 +36,6 @@ local function get_lsp_name()
     --
     return language_servers
 end
-
-local lualine = require("lualine")
-local lazy_status = require("lazy.status") -- to configure lazy pending updates count
 
 local colors = {
     blue = "#65D1FF",

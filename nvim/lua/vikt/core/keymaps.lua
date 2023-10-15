@@ -93,9 +93,12 @@ map("n", "<leader>fa", "<cmd> Telescope find_files follow=true no_ignore=true hi
 map("n", "<leader>fw", "<cmd> Telescope live_grep <CR>", { desc = "Live grep" })
 map("n", "<leader>fb", "<cmd> Telescope buffers <CR>", { desc = "Find buffers" })
 map("n", "<leader>fh", "<cmd> Telescope help_tags <CR>", { desc = "Help page" })
-map("n", "<leader>fo", "<cmd> Telescope oldfiles <CR>", { desc = "Find oldfiles" })
+map("n", "<leader>fp", "<cmd> Telescope oldfiles <CR>", { desc = "Find oldfiles" })
 map("n", "<leader>fz", "<cmd> Telescope current_buffer_fuzzy_find <CR>", { desc = "Find in current buffer" })
 map("n", "<leader>fk", "<cmd> Telescope keymaps <CR>", { desc = "Find keymaps" })
+map("n", "<leader>fc", "<cmd> Telescope commands <CR>", { desc = "Find commands" })
+map("n", "<leader>fo", "<cmd> Telescope options <CR>", { desc = "Find options" })
+map("n", "<leader>fr", "<cmd> Telescope registers <CR>", { desc = "Find registers" })
 --
 -- git
 map("n", "<leader>gm", "<cmd> Telescope git_commits <CR>", { desc = "Git commits" })
