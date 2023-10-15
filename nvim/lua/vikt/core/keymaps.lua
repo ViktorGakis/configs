@@ -6,6 +6,7 @@ g.mapleader = " "
 g.maplocalleader = " "
 ---------------------
 ---- Generic Utils
+map("n", "<leader>q", "<cmd>q!<CR>", { desc = "Force quit" })
 map("n", "<C-d>", "<C-d>zz", { desc = "<C-d> with centering in the end" })
 map("n", "<C-u>", "<C-u>zz", { desc = "<C-u> with centering in the end" })
 map("n", "<leader>o", "o<ESC>")

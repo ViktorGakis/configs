@@ -96,5 +96,6 @@ return {
             "nvim-tree/nvim-web-devicons",
         },
     },
-    { "rktjmp/lush.nvim" },
+    -- ufo, for code folding
+    { "kevinhwang91/nvim-ufo", dependencies = "kevinhwang91/promise-async" },
 }
