@@ -57,6 +57,7 @@ return {
                 "eslint_d", -- js linter
                 "csharpier",
                 "semgrep",
+                "netcoredbg",
             },
         })
     end,

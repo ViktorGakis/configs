@@ -84,7 +84,7 @@ map("n", "<leader>wm", "<cmd>MaximizerToggle<CR>", { desc = "Maximize/minimize a
 
 ---- NVIMTREE
 map("n", "<C-n>", "<cmd> NvimTreeToggle <CR>", { desc = "Toggle nvimtree" })
-map("n", "<leader>e", "<cmd> NvimTreeFocus <CR>", { desc = "Focus nvimtree" })
+map({ "n", "i", "v", "x" }, "<leader>e", "<cmd> NvimTreeFocus <CR>", { desc = "Focus nvimtree" })
 map("n", "<leader>er", "<cmd>NvimTreeRefresh<CR>", { desc = "Refresh file explorer" })
 map("n", "<leader>ef", "<cmd>NvimTreeFindFile<CR>", { desc = "Toggle file explorer on current file" })
 
@@ -143,26 +143,6 @@ map(
     { desc = "Toggle comment" }
 )
 
----- Python dap
----
-map("n", "<leader>db", "<cmd> DapToggleBreakpoint <CR>", { desc = "Toggles Breakpoint" })
-
-map("n", "<leader>dpr", function()
-    require("dap-python").test_method()
-end, { desc = "Python Dap Test Method" })
-
-map("n", "<leader>cc", function()
-    local ok, start = require("indent_blankline.utils").get_current_context(
-        vim.g.indent_blankline_context_patterns,
-        vim.g.indent_blankline_use_treesitter_scope
-    )
-
-    if ok then
-        vim.api.nvim_win_set_cursor(vim.api.nvim_get_current_win(), { start, 0 })
-        vim.cmd([[normal! _]])
-    end
-end, { desc = "Jump to current context" })
-
 ----NEOGIT
 map("n", "<leader>gs", "<cmd>Neogit kind=vsplit<CR>", { desc = "Open Neogit in vslit" })
 -- to make work
@@ -171,7 +151,8 @@ map("n", "<leader>th", "<cmd> Telescope themes <CR>", { desc = "Nvchad themes" }
 
 map("n", "<leader>ma", "<cmd> Telescope marks <CR>", { desc = "telescope bookmarks" })
 
-map("n", "<leader>m1", "<cmd>CellularAutomaton make_it_rain<CR>", { desc = "Liquify window" })
+map("n", "<leader>m1", "<cmd>CellularAutomaton make_it_rain<CR>", { desc = "Liquify window1" })
+map("n", "<leader>m2", "<cmd>CellularAutomaton game_of_life<CR>", { desc = "Liquify window2" })
 
 -- Move current line / block with Alt-j/k a la vscode.
 map("n", "<M-j>", ":m .+1<CR>==", { silent = true })
@@ -185,3 +166,15 @@ map("n", "<M-k>", ":m .-2<CR>==", { silent = true })
 -- Better indenting in Visual mode
 map("v", ">", ">gv")
 map("v", "<", "<gv")
+
+map("n", "<leader>cc", function()
+    local ok, start = require("indent_blankline.utils").get_current_context(
+        vim.g.indent_blankline_context_patterns,
+        vim.g.indent_blankline_use_treesitter_scope
+    )
+
+    if ok then
+        vim.api.nvim_win_set_cursor(vim.api.nvim_get_current_win(), { start, 0 })
+        vim.cmd([[normal! _]])
+    end
+end, { desc = "Jump to current context" })
