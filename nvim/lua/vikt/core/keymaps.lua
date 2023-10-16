@@ -100,15 +100,14 @@ map("n", "<leader>fk", "<cmd> Telescope keymaps <CR>", { desc = "Find keymaps" }
 map("n", "<leader>fc", "<cmd> Telescope commands <CR>", { desc = "Find commands" })
 map("n", "<leader>fo", "<cmd> Telescope options <CR>", { desc = "Find options" })
 map("n", "<leader>fr", "<cmd> Telescope registers <CR>", { desc = "Find registers" })
-map("n", "<leader>fs", "<cmd> Telescope lsp_document_symbols <CR>", { desc = "Find Symbols" })
---
+map("n", "<leader>fl", "<cmd> Telescope lsp_document_symbols <CR>", { desc = "Find Lsp Symbols" })
+
 -- git
 map("n", "<leader>gm", "<cmd> Telescope git_commits <CR>", { desc = "Git commits" })
 
 map("n", "<leader>gt", "<cmd> Telescope git_status <CR>", { desc = "Git status" })
 
 map("n", "<leader>pt", "<cmd> Telescope terms <CR>", { desc = "Pick hidden term" })
-
 ---- Sessions
 map("n", "<leader>wr", "<cmd>SessionRestore<CR>", { desc = "Restore session for cwd" })             -- restore last workspace session for current directory
 map("n", "<leader>ws", "<cmd>SessionSave<CR>", { desc = "Save session for auto session root dir" }) -- save workspace session for current working directory
