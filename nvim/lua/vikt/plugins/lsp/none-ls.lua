@@ -22,7 +22,7 @@ return {
                 "pylint", -- python linter
                 "eslint_d", -- js linter
                 "csharpier",
-                "semgrep", -- C# linter
+                -- "semgrep", -- C# linter
             },
         })
 
@@ -48,6 +48,7 @@ return {
                 formatting.isort,
                 formatting.black,
                 formatting.csharpier,
+                -- diagnostics.semgrep,
                 diagnostics.pylint,
                 diagnostics.eslint_d.with({ -- js/ts linter
                     condition = function(utils)

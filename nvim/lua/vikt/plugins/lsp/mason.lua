@@ -38,7 +38,8 @@ return {
                 -- "prismals",
                 "pyright",
                 "ruff_lsp",
-                "omnisharp",
+                -- "omnisharp",
+                -- "csharp-language-server",
             },
             -- auto-install configured servers (with lspconfig)
             automatic_installation = true, -- not the same as ensure_installed
@@ -56,7 +57,7 @@ return {
                 "debugpy",
                 "eslint_d", -- js linter
                 "csharpier",
-                "semgrep",
+                -- "semgrep",
                 "netcoredbg",
             },
         })

@@ -49,15 +49,15 @@ map("i", "<C-k>", "<Up>", { desc = "Move up" })
 -- clear search highlights
 map("n", "<Esc>", ":nohl<CR>", { desc = "Clear search highlights" })
 -- switch between windows
--- map("n", "<C-h>", "<C-w>h", { desc = "Window left" })
--- map("n", "<C-l>", "<C-w>l", { desc = "Window right" })
--- map("n", "<C-j>", "<C-w>j", { desc = "Window down" })
--- map("n", "<C-k>", "<C-w>k", { desc = "Window up" })
+map("n", "<C-h>", "<C-w>h", { desc = "Window left" })
+map("n", "<C-l>", "<C-w>l", { desc = "Window right" })
+map("n", "<C-j>", "<C-w>j", { desc = "Window down" })
+map("n", "<C-k>", "<C-w>k", { desc = "Window up" })
 
-map("n", "<C-h>", "<cmd> TmuxNavigateLeft<CR>", { desc = "Tmux Window left" })
-map("n", "<C-l>", "<cmd> TmuxNavigateRight<CR>", { desc = "Tmux Window right" })
-map("n", "<C-j>", "<cmd> TmuxNavigateDown<CR>", { desc = "Tmux Window down" })
-map("n", "<C-k>", "<cmd> TmuxNavigateUp<CR>", { desc = "Tmux Window up" })
+-- map("n", "<C-h>", "<cmd> TmuxNavigateLeft<CR>", { desc = "Tmux Window left" })
+-- map("n", "<C-l>", "<cmd> TmuxNavigateRight<CR>", { desc = "Tmux Window right" })
+-- map("n", "<C-j>", "<cmd> TmuxNavigateDown<CR>", { desc = "Tmux Window down" })
+-- map("n", "<C-k>", "<cmd> TmuxNavigateUp<CR>", { desc = "Tmux Window up" })
 
 -- Allow moving cursor through wrapped lines
 map("n", "j", 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', { desc = "Move down", expr = true })
@@ -100,6 +100,7 @@ map("n", "<leader>fk", "<cmd> Telescope keymaps <CR>", { desc = "Find keymaps" }
 map("n", "<leader>fc", "<cmd> Telescope commands <CR>", { desc = "Find commands" })
 map("n", "<leader>fo", "<cmd> Telescope options <CR>", { desc = "Find options" })
 map("n", "<leader>fr", "<cmd> Telescope registers <CR>", { desc = "Find registers" })
+map("n", "<leader>fs", "<cmd> Telescope lsp_document_symbols <CR>", { desc = "Find Symbols" })
 --
 -- git
 map("n", "<leader>gm", "<cmd> Telescope git_commits <CR>", { desc = "Git commits" })
@@ -109,7 +110,7 @@ map("n", "<leader>gt", "<cmd> Telescope git_status <CR>", { desc = "Git status" 
 map("n", "<leader>pt", "<cmd> Telescope terms <CR>", { desc = "Pick hidden term" })
 
 ---- Sessions
-map("n", "<leader>wr", "<cmd>SessionRestore<CR>", { desc = "Restore session for cwd" }) -- restore last workspace session for current directory
+map("n", "<leader>wr", "<cmd>SessionRestore<CR>", { desc = "Restore session for cwd" })             -- restore last workspace session for current directory
 map("n", "<leader>ws", "<cmd>SessionSave<CR>", { desc = "Save session for auto session root dir" }) -- save workspace session for current working directory
 --
 map("n", "<leader>b", "<cmd> enew <CR>", { desc = "New buffer" })

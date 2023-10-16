@@ -1,0 +1,22 @@
+-- vim.cmd([[
+-- 	set listchars=tab:>·,trail:~,extends:>,precedes:<,space:·
+-- 	set list
+-- 	" 4 spaces indentation
+-- 	set tabstop=4 softtabstop=0 expandtab shiftwidth=4
+-- 	" Deal with unwanted white spaces (show them in red)
+-- 	highlight ExtraWhitespace ctermbg=red guibg=red
+-- 	match ExtraWhitespace /\s\+$/
+-- 	autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+-- 	autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+-- 	autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+-- 	autocmd BufWinLeave * call clearmatches()
+-- " Coc CSS
+-- " Use tab for trigger completion with characters ahead and navigate.
+-- " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+-- " other plugin before putting this into your config.
+-- inoremap <silent><expr> <TAB>
+--       \ coc#pum#visible() ? coc#pum#next(1):
+--       \ CheckBackspace() ? "\<Tab>" :
+--       \ coc#refresh()
+-- inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+-- ]])
