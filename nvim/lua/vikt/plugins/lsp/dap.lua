@@ -7,6 +7,10 @@ return {
         dependencies = "mfussenegger/nvim-dap",
     },
     {
+        "theHamsta/nvim-dap-virtual-text",
+        opts = {},
+    },
+    {
         "mfussenegger/nvim-dap-python",
         ft = "python",
         dependencies = {

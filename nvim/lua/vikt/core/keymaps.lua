@@ -84,7 +84,7 @@ map("n", "<leader>wm", "<cmd>MaximizerToggle<CR>", { desc = "Maximize/minimize a
 
 ---- NVIMTREE
 map("n", "<C-n>", "<cmd> NvimTreeToggle <CR>", { desc = "Toggle nvimtree" })
-map({ "n", "i", "v", "x" }, "<leader>e", "<cmd> NvimTreeFocus <CR>", { desc = "Focus nvimtree" })
+map({ "n", "v", "x" }, "<leader>ee", "<cmd> NvimTreeFocus <CR>", { desc = "Focus nvimtree" })
 map("n", "<leader>er", "<cmd>NvimTreeRefresh<CR>", { desc = "Refresh file explorer" })
 map("n", "<leader>ef", "<cmd>NvimTreeFindFile<CR>", { desc = "Toggle file explorer on current file" })
 
