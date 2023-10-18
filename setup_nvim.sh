@@ -10,7 +10,7 @@
 git clone --depth 1 https://github.com/ViktorGakis/dotfiles.git ~/.config_temp/
 
 # Move all the content from the temp cloned directory to ~/.config+
-[ -d ~/.config/ ] &&  mkdir -p ~/.config/
+mkdir -p ~/.config/
 mv ~/.config_temp/* ~/.config_temp/.[!.]* ~/.config/
 
 # Remove the temporary directory
