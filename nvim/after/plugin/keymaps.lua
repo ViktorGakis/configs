@@ -89,3 +89,6 @@ map("n", "<M-k>", ":m .-2<CR>==", { silent = true })
 -- Better indenting in Visual mode
 map("v", ">", ">gv")
 map("v", "<", "<gv")
+
+map({ "n", "v" }, "<leader>la", require("actions-preview").code_actions)
+map({ "v", "n" }, "<leader>cr", require("actions-preview").code_actions)

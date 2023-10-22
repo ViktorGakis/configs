@@ -1,18 +1,44 @@
 return {
     "nvim-lua/plenary.nvim", -- lua functions that many plugins use
 
-    "christoomey/vim-tmux-navigator", -- tmux & split window navigation
+    -- "christoomey/vim-tmux-navigator",   -- tmux & split window navigation
 
     "inkarkat/vim-ReplaceWithRegister", -- replace with register contents using motion (gr + motion)
     {
         "NeogitOrg/neogit",
         dependencies = {
-            "nvim-lua/plenary.nvim", -- required
+            "nvim-lua/plenary.nvim",         -- required
             "nvim-telescope/telescope.nvim", -- optional
-            "sindrets/diffview.nvim", -- optional
-            "ibhagwan/fzf-lua", -- optional
+            "sindrets/diffview.nvim",        -- optional
+            "ibhagwan/fzf-lua",              -- optional
         },
         config = true,
+    },
+    {
+        "lukas-reineke/indent-blankline.nvim",
+        main = "ibl",
+        opts = function(_, opts)
+            -- Other blankline configuration here
+            return require("indent-rainbowline").make_opts(opts, {
+                -- How transparent should the rainbow colors be. 1 is completely opaque, 0 is invisible. 0.07 by default
+                color_transparency = 0.25,
+                -- The 24-bit colors to mix with the background. Specified in hex.
+                -- { 0xffff40, 0x79ff79, 0xff79ff, 0x4fecec, } by default
+                colors = {
+                    0x0077be,
+                    0x6840dd,
+                    0x9200a1,
+                    0xdd0077,
+                    0x9932cc,
+                    0x6a0dad,
+                    0x4b0082,
+                    0xbb76ff,
+                },
+            })
+        end,
+        dependencies = {
+            "TheGLander/indent-rainbowline.nvim",
+        },
     },
     {
         "akinsho/bufferline.nvim",
@@ -35,16 +61,11 @@ return {
         event = "VeryLazy",
     },
     {
-        "stevearc/dressing.nvim",
-        event = "VeryLazy",
-    },
-    {
         "lewis6991/gitsigns.nvim",
         event = { "BufReadPre", "BufNewFile" },
         config = true,
     },
-    { "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} },
-    { "petertriho/nvim-scrollbar", lazy = true },
+    { "petertriho/nvim-scrollbar",       lazy = true },
     {
         "utilyre/barbecue.nvim",
         name = "barbecue",
@@ -65,17 +86,15 @@ return {
             -- refer to the configuration section below
         },
     },
-    { "folke/neodev.nvim", opts = {} },
-    { "akinsho/toggleterm.nvim", version = "*", config = true },
-    { "phaazon/hop.nvim", branch = "v2", lazy = true },
+    { "folke/neodev.nvim",               opts = {} },
+    { "akinsho/toggleterm.nvim",         version = "*", config = true },
+    { "phaazon/hop.nvim",                branch = "v2", lazy = true },
     { "eandrju/cellular-automaton.nvim", lazy = false },
-    { "rcarriga/nvim-notify", lazy = true },
-    { "kevinhwang91/nvim-hlslens", lazy = true },
+    { "rcarriga/nvim-notify",            lazy = true },
+    { "kevinhwang91/nvim-hlslens",       lazy = true },
     {
         "aznhe21/actions-preview.nvim",
-        config = function()
-            vim.keymap.set({ "v", "n" }, "<leader>cr", require("actions-preview").code_actions)
-        end,
+        config = function() end,
         lazy = true,
     },
     {
@@ -98,5 +117,4 @@ return {
     },
     -- ufo, for code folding
     { "kevinhwang91/nvim-ufo", dependencies = "kevinhwang91/promise-async" },
-    -- { "omnisharp-vim" },
 }

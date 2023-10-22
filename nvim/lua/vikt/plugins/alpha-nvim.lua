@@ -20,6 +20,7 @@ return {
 
         -- Set menu
         dashboard.section.buttons.val = {
+            dashboard.button("<leader>ec", "  > init", "<cmd>e ~/.config/nvim/lua/vikt/plugins/init.lua <CR>"),
             dashboard.button("<leader>ec", "  > NVIM", "<cmd>e ~/.config/nvim/ <CR>"),
             dashboard.button("<M-1>", "  > TMUX", "<cmd>e ~/.config/tmux/tmux.conf <CR>"),
             dashboard.button("e", "  > New File", "<cmd>ene<CR>"),
