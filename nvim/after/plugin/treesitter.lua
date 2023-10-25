@@ -2,6 +2,7 @@ vim.api.nvim_set_hl(0, "@keyword.function", { fg = "#c300ff", bold = true, itali
 vim.api.nvim_set_hl(0, "PreProc", { fg = "#c300ff", bold = true, italic = true })
 vim.api.nvim_set_hl(0, "@keyword", { fg = "#c300ff", bold = true, italic = true })
 vim.api.nvim_set_hl(0, "@operator", { fg = "#d4136d", bold = true })
+vim.api.nvim_set_hl(0, "Statement", { fg = "#d4136d", bold = true })
 vim.api.nvim_set_hl(0, "Function", { fg = "#1500ff", bold = true })
 vim.api.nvim_set_hl(0, "@function", { fg = "#1500ff", bold = true })
 vim.api.nvim_set_hl(0, "Special", { fg = "#1500ff" })
