@@ -81,8 +81,8 @@ vim.cmd("au TextYankPost * lua vim.highlight.on_yank {on_visual = false}")
 -- Indent blankline
 vim.opt.list = true
 vim.opt.listchars:append("eol:↴")
-vim.opt.listchars:append("tab:->")
-vim.opt.listchars:append("space:·")
+-- vim.opt.listchars:append("tab:->")
+-- vim.opt.listchars:append("space:·")
 vim.api.nvim_set_keymap("n", "<leader>es", "<cmd> set invlist <CR>", { desc = "Show whitespaces" })
 -- vim.opt.listchars:append("extends:'▶'")
 -- vim.opt.listchars:append("precedes:'◀'")

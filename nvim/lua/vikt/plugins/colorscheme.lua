@@ -11,8 +11,11 @@ return {
         "folke/tokyonight.nvim",
         priority = 1000,
         config = function()
-            local bg = "#04010f"
-            local bg_dark = "#04010f"
+            -- #060217
+            -- #1a1a1a
+            local clr = "#060217"
+            local bg = clr
+            local bg_dark = clr
             local bg_highlight = "#143652"
             -- local bg_search = "#0A64AC"
             -- local bg_visual = "#275378"
