@@ -92,3 +92,30 @@ map("v", "<", "<gv")
 
 map({ "n", "v" }, "<leader>la", require("actions-preview").code_actions)
 map({ "v", "n" }, "<leader>cr", require("actions-preview").code_actions)
+
+-- Function to toggle space visibility in listchars
+-- function toggle_space_in_listchars()
+--     -- Retrieve the 'listchars' option as a string
+--     local listchars_str = vim.api.nvim_get_option("listchars")
+--
+--     if string.find(listchars_str, "space:⋅") then
+--         -- If the special character for space is found, remove it
+--         listchars_str = string.gsub(listchars_str, "space:⋅", "")
+--     else
+--         -- If the space character is not already set, add it
+--         -- We need to check if there are any existing settings in 'listchars'
+--         if listchars_str and #listchars_str > 0 then
+--             -- Append our space setting to the existing 'listchars' settings
+--             listchars_str = listchars_str .. ",space:⋅"
+--         else
+--             -- If 'listchars' was empty, we set it directly
+--             listchars_str = "space:⋅"
+--         end
+--     end
+--
+--     -- Apply the new 'listchars' setting
+--     vim.api.nvim_set_option("listchars", listchars_str)
+-- end
+
+-- Map a key to toggle space visibility
+--[[ map("n", "<leader>es", toggle_space_in_listchars, { noremap = true, silent = true, descr = "View wspace" }) ]]

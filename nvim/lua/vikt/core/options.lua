@@ -19,7 +19,7 @@ opt.textwidth = 999999999
 opt.showbreak = "  "
 -- search settings
 opt.ignorecase = true -- ignore case when searching
-opt.smartcase = true -- if you include mixed case in your search, assumes you want case-sensitive
+opt.smartcase = true  -- if you include mixed case in your search, assumes you want case-sensitive
 
 -- cursor line
 opt.cursorline = true -- highlight the current cursor line
@@ -62,7 +62,7 @@ o.shiftwidth = 4
 o.smartindent = true
 o.mouse = "a"
 o.ignorecase = true
-o.smartcase = true
+o.smartcase = truelseif
 o.colorcolumn = ""
 o.syntax = "enable"
 o.termguicolors = true
@@ -81,3 +81,8 @@ vim.cmd("au TextYankPost * lua vim.highlight.on_yank {on_visual = false}")
 -- Indent blankline
 vim.opt.list = true
 vim.opt.listchars:append("eol:↴")
+vim.opt.listchars:append("tab:->")
+vim.opt.listchars:append("space:·")
+vim.api.nvim_set_keymap("n", "<leader>es", "<cmd> set invlist <CR>", { desc = "Show whitespaces" })
+-- vim.opt.listchars:append("extends:'▶'")
+-- vim.opt.listchars:append("precedes:'◀'")
