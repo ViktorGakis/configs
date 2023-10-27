@@ -19,3 +19,4 @@ bash ~/.config_temp/setup_nvim.sh
    - https://github.com/returntocorp/semgrep
    - https://www.youtube.com/watch?v=KpudmVmMWx4kk
 1. Configure Java
+1. Fix python debugger
