@@ -387,20 +387,21 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
         -- Below are separate from the above
 
-        local null = require("null-ls")
+        -- local null = require("null-ls")
 
-        null.setup({
-            sources = {
-                -- null.builtins.formatting.prettier,
-                -- null.builtins.diagnostics.eslint,
-                -- null.builtins.formatting.stylua,
-                null.builtins.code_actions.gitsigns,
-            },
-        })
-
-        require("mason").setup()
-        require("mason-null-ls").setup({
-            automatic_setup = true,
-        })
+        -- null.setup({
+        --     sources = {
+        --         null.builtins.formatting.prettier,
+        --         null.builtins.formatting.black,
+        --         null.builtins.diagnostics.eslint,
+        --         null.builtins.formatting.stylua,
+        --         null.builtins.code_actions.gitsigns,
+        --     },
+        -- })
+        --
+        -- require("mason").setup()
+        -- require("mason-null-ls").setup({
+        --     automatic_setup = true,
+        -- })
     end,
 })
