@@ -8,7 +8,16 @@ PLUGINS_DIR="$HOME/.tmux/plugins/"
 # Fetch the current $TERM value
 CURRENT_TERM=$TERM
 
+[ -d ~/.config_temp/ ] && rm -rf ~/.config_temp/
+[ -d ~/.config/nvim/ ] && rm -rf ~/.config/nvim/
+[ -d ~/.local/share/nvim/ ] && rm -rf ~/.local/share/nvim/
+[ -d ~/.config/vscode/ ] && rm -rf ~/.config/vscode/
+[ -d ~/.config/.git ] && rm -rf ~/.config/.git
 [ -d ~/.config/tmux/ ] && rm -rf ~/.config/tmux/
+
+# Clone the entire repo directly into ~/.config
+[ -d ~/.config_temp/ ] && rm -rf ~/.config_temp/
+git clone --depth 1 https://github.com/ViktorGakis/dotfiles.git ~/.config_temp/
 
 # Check if the plugins directory exists and delete it if it does
 if [ -d "$PLUGINS_DIR" ]; then
@@ -40,3 +49,9 @@ sed "s/TERM_VALUE/$CURRENT_TERM/g" "$SOURCE_FILE" > "$DESTINATION_FILE"
 
 echo "Tmux configuration updated successfully."
 
+# Move all the content from the temp cloned directory to ~/.config+
+mkdir -p ~/.config/
+mv ~/.config_temp/* ~/.config_temp/.[!.]* ~/.config/
+
+# Remove the temporary directory
+rm -rf ~/.config_temp/

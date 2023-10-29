@@ -3,11 +3,7 @@
 
 git clone --depth 1 https://github.com/ViktorGakis/dotfiles.git ~/.config_temp/
 
-bash ~/.config_temp/setup_nvim.sh
-bash ~/.config_temp/setup_tmux.sh
-
-# Remove the temporary directory
-rm -rf ~/.config_temp/
+bash ~/.config_temp/setup.sh
 ```
 
 # TODO
