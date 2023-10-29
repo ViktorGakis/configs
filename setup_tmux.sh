@@ -5,6 +5,9 @@ SOURCE_FILE="./tmux/tmux.conf"
 DESTINATION_FILE="$HOME/.tmux.conf"
 PLUGINS_DIR="$HOME/.tmux/plugins/"
 
+# Fetch the current $TERM value
+CURRENT_TERM=$TERM
+
 # Check if the plugins directory exists and delete it if it does
 if [ -d "$PLUGINS_DIR" ]; then
     echo "Removing existing plugins directory."
@@ -30,8 +33,8 @@ else
     touch "$DESTINATION_FILE"
 fi
 
-# Copy the contents from the source file to the destination file
-cat "$SOURCE_FILE" > "$DESTINATION_FILE"
+# Replace 'TERM_VALUE' with the actual $TERM value in the source file and write it to the destination file
+sed "s/TERM_VALUE/$CURRENT_TERM/g" "$SOURCE_FILE" > "$DESTINATION_FILE"
 
 echo "Tmux configuration updated successfully."
 
