@@ -74,7 +74,7 @@ return {
             "SmiteshP/nvim-navic",
             "nvim-tree/nvim-web-devicons", -- optional dependency
         },
-        theme = "tokyonight",
+        -- theme = "tokyonight",
         lazy = true,
     },
     {
