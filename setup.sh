@@ -12,13 +12,31 @@ DESTINATION_FILE="$HOME/.tmux.conf"
 # Remove specific directories
 cleanup() {
     echo "Cleaning up existing configuration directories..."
-    local dirs=( "$CONFIG_DIR/nvim" "$CONFIG_DIR/vscode" "$CONFIG_DIR/.git" "$CONFIG_DIR/tmux" "$PLUGINS_DIR" )
+    local dirs=( "nvim" "vscode" ".git" "tmux" )  # Directories within $CONFIG_DIR to remove
 
     for dir in "${dirs[@]}"; do
-        if [ -d "$dir" ]; then
-            rm -rf "$dir"
+        dir_path="$CONFIG_DIR/$dir"
+        if [ -d "$dir_path" ]; then
+            echo "Removing $dir_path"
+            rm -rf "$dir_path"
+            if [ $? -ne 0 ]; then
+                echo "Error: Could not remove $dir_path"
+                exit 1
+            fi
+        else
+            echo "Directory $dir_path does not exist, skipping."
         fi
     done
+
+    # Handling the tmux plugins directory separately as it's not in the .config directory
+    if [ -d "$PLUGINS_DIR" ]; then
+        echo "Removing $PLUGINS_DIR"
+        rm -rf "$PLUGINS_DIR"
+        if [ $? -ne 0 ]; then
+            echo "Error: Could not remove $PLUGINS_DIR"
+            exit 1
+        fi
+    fi
 }
 
 # Setup tmux configuration
