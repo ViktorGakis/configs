@@ -1,54 +1,50 @@
 #!/bin/bash
 
-# Set up global variables
-SOURCE_FILE="./tmux/tmux.conf"
-DESTINATION_FILE="$HOME/.tmux.conf"
-PLUGINS_DIR="$HOME/.tmux/plugins/"
+# Set the temporary directory and repository URL
+TEMP_DIR="$HOME/.config_temp"
 REPO_URL="https://github.com/ViktorGakis/dotfiles.git"
-TEMP_DIR="$HOME/.config_temp/"
-CONFIG_DIR="$HOME/.config/"
+PLUGINS_DIR="$HOME/.tmux/plugins/"
 
-# Cleans up the old configuration
-cleanup_old() {
-    local dirs_to_remove=("$CONFIG_DIR/nvim/" "$CONFIG_DIR/vscode/" "$CONFIG_DIR/.git" "$CONFIG_DIR/tmux/" "$PLUGINS_DIR" "$TEMP_DIR")
+# Paths for the tmux configuration
+SOURCE_FILE="$TEMP_DIR/tmux/tmux.conf"
+DESTINATION_FILE="$HOME/.tmux.conf"
 
-    echo "Cleaning up old configuration..."
-    for dir in "${dirs_to_remove[@]}"; do
+# Remove existing configurations
+cleanup() {
+    echo "Cleaning up existing configuration directories..."
+    local dirs=( "$HOME/.config/nvim" "$HOME/.config/vscode" "$HOME/.config/.git" "$HOME/.config/tmux" "$PLUGINS_DIR" "$TEMP_DIR" )
+
+    for dir in "${dirs[@]}"; do
         if [ -d "$dir" ]; then
             rm -rf "$dir"
         fi
     done
 }
 
-# Clone new configuration
-clone_new() {
-    echo "Cloning new configuration..."
-    if ! command -v git &>/dev/null; then
-        echo "Error: git is not installed."
-        exit 1
-    fi
-
+# Clone the repository
+clone_repo() {
+    echo "Cloning repository..."
+    mkdir -p "$TEMP_DIR"
     git clone --depth 1 "$REPO_URL" "$TEMP_DIR"
-    if [ $? -ne 0 ]; then
-        echo "Error: Failed to clone repository."
-        exit 1
-    fi
 }
 
-# Check and setup tmux configuration
+# Setup tmux
 setup_tmux() {
     echo "Setting up tmux..."
 
+    # Check if the tmux.conf source file exists
     if [ ! -f "$SOURCE_FILE" ]; then
         echo "Error: Source file $SOURCE_FILE does not exist."
         exit 1
     fi
 
-    # Ensure destination exists and is empty
-    cat /dev/null > "$DESTINATION_FILE"
+    # Create or truncate the destination file
+    : > "$DESTINATION_FILE"
 
+    # Replace 'TERM_VALUE' with the actual $TERM value in the source file
     local current_term=$TERM
     sed "s/TERM_VALUE/$current_term/g" "$SOURCE_FILE" > "$DESTINATION_FILE"
+
     if [ $? -ne 0 ]; then
         echo "Error: Could not set up tmux configuration."
         exit 1
@@ -57,32 +53,27 @@ setup_tmux() {
     echo "Tmux configuration updated successfully."
 }
 
-# Move new configuration into place
+# Move the cloned configuration to the appropriate directory
 move_configuration() {
-    echo "Moving new configuration into place..."
-
-    mkdir -p "$CONFIG_DIR"
-    # The dot at the end of the source path is important to copy hidden files
-    cp -r "$TEMP_DIR". "$CONFIG_DIR"
-    if [ $? -ne 0 ]; then
-        echo "Error: Could not move new configuration."
-        exit 1
-    fi
-
-    # Clean up temp directory
-    rm -rf "$TEMP_DIR"
+    echo "Moving new configuration..."
+    mkdir -p "$HOME/.config"
+    mv "$TEMP_DIR"/* "$TEMP_DIR"/.[!.]* "$HOME/.config"  # This line moves hidden files as well
 }
 
-# Main script logic
+# Main script execution
 main() {
-    cleanup_old
-    clone_new
+    cleanup
+    clone_repo
     setup_tmux
     move_configuration
 
-    echo "All configurations have been successfully updated."
+    # Final cleanup: Remove the temporary directory if it's still present
+    if [ -d "$TEMP_DIR" ]; then
+        rm -rf "$TEMP_DIR"
+    fi
+
+    echo "Configuration applied successfully."
 }
 
-# Start the script
+# Invoke the script
 main
-
