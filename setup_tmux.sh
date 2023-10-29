@@ -8,6 +8,8 @@ PLUGINS_DIR="$HOME/.tmux/plugins/"
 # Fetch the current $TERM value
 CURRENT_TERM=$TERM
 
+[ -d ~/.config/tmux/ ] && rm -rf ~/.config/tmux/
+
 # Check if the plugins directory exists and delete it if it does
 if [ -d "$PLUGINS_DIR" ]; then
     echo "Removing existing plugins directory."
