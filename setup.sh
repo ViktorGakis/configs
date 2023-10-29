@@ -7,6 +7,7 @@ declare -r CONFIG_DIR="$HOME_DIR/.config"
 declare -r TMUX_DIR="$CONFIG_DIR/tmux"
 declare -r TMUX_CONF="$HOME_DIR/.tmux.conf"
 declare -r TMUX_PLUGINS_DIR="$HOME_DIR/.tmux/plugins"
+declare -r TERM_PLACEHOLDER="TERM_VALUE"
 
 # Old configurations that need to be cleaned
 declare -a OLD_CONFIG_DIRS=(
@@ -45,7 +46,13 @@ setup_tmux() {
         rm -rf "$TMUX_PLUGINS_DIR"
     fi
 
-    cp "$source_file" "$TMUX_CONF"
+    # Capturing the current TERM value
+    local current_term="$TERM"
+
+    # Replace the placeholder with the actual $TERM value in the source file
+    # and write it to the destination file
+    sed "s/$TERM_PLACEHOLDER/$current_term/g" "$source_file" > "$TMUX_CONF"
+
     echo "Tmux configuration updated successfully."
 }
 
