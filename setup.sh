@@ -1,98 +1,81 @@
 #!/bin/bash
 
-# Set the base directories
-BASE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" &>/dev/null && pwd)"
-CONFIG_DIR="$HOME/.config"
-PLUGINS_DIR="$HOME/.tmux/plugins/"
+# Define constants for cleaner path handling
+declare -r SCRIPT_DIR="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+declare -r HOME_DIR="$HOME"
+declare -r CONFIG_DIR="$HOME_DIR/.config"
+declare -r TMUX_DIR="$CONFIG_DIR/tmux"
+declare -r TMUX_CONF="$HOME_DIR/.tmux.conf"
+declare -r TMUX_PLUGINS_DIR="$HOME_DIR/.tmux/plugins"
 
-# Paths for the tmux configuration
-SOURCE_FILE="$BASE_DIR/tmux/tmux.conf"
-DESTINATION_FILE="$HOME/.tmux.conf"
+# Old configurations that need to be cleaned
+declare -a OLD_CONFIG_DIRS=(
+    "$CONFIG_DIR/nvim"
+    "$HOME_DIR/.local/share/nvim"
+    "$CONFIG_DIR/vscode"
+    "$CONFIG_DIR/.git"
+    "$TMUX_DIR"
+)
 
-# Remove specific directories
-cleanup() {
-    echo "Cleaning up existing configuration directories..."
+# Function to clean old configurations
+clean_old_configs() {
+    echo "Cleaning up old configurations..."
 
-    # Directories to remove. Note that these are absolute paths.
-    local dirs=( 
-        "$HOME/.config_temp" 
-        "$HOME/.config/nvim" 
-        "$HOME/.local/share/nvim" 
-        "$HOME/.config/vscode" 
-        "$HOME/.config/.git"  # This was previously incorrectly specified without the leading dot
-        "$HOME/.config/tmux" 
-    )
-
-    for dir_path in "${dirs[@]}"; do
-        if [ -d "$dir_path" ]; then
-            echo "Removing $dir_path"
-            rm -rf "$dir_path"
-            if [ $? -ne 0 ]; then
-                echo "Error: Could not remove $dir_path"
-                exit 1
-            fi
-        else
-            echo "Directory $dir_path does not exist, skipping."
+    for dir in "${OLD_CONFIG_DIRS[@]}"; do
+        if [ -d "$dir" ]; then
+            echo "Removing directory: $dir"
+            rm -rf "$dir"
         fi
     done
-
-    # Handling the tmux plugins directory separately as it's not in the .config directory
-    if [ -d "$PLUGINS_DIR" ]; then
-        echo "Removing $PLUGINS_DIR"
-        rm -rf "$PLUGINS_DIR"
-        if [ $? -ne 0 ]; then
-            echo "Error: Could not remove $PLUGINS_DIR"
-            exit 1
-        fi
-    fi
 }
 
-
-# Setup tmux configuration
+# Function to set up tmux
 setup_tmux() {
     echo "Setting up tmux..."
 
-    # Check if the tmux.conf source file exists
-    if [ ! -f "$SOURCE_FILE" ]; then
-        echo "Error: Source file $SOURCE_FILE does not exist."
+    local source_file="$SCRIPT_DIR/tmux/tmux.conf"
+
+    if [ ! -f "$source_file" ]; then
+        echo "Error: Source file $source_file does not exist."
         exit 1
     fi
 
-    # Create or truncate the destination file
-    : > "$DESTINATION_FILE"
-
-    # Replace 'TERM_VALUE' with the actual $TERM value in the source file
-    local current_term=$TERM
-    sed "s/TERM_VALUE/$current_term/g" "$SOURCE_FILE" > "$DESTINATION_FILE"
-
-    if [ $? -ne 0 ]; then
-        echo "Error: Could not set up tmux configuration."
-        exit 1
+    if [ -d "$TMUX_PLUGINS_DIR" ]; then
+        echo "Removing existing Tmux plugins directory."
+        rm -rf "$TMUX_PLUGINS_DIR"
     fi
 
+    cp "$source_file" "$TMUX_CONF"
     echo "Tmux configuration updated successfully."
 }
 
-# Move the cloned configuration to the appropriate directory
-move_configuration() {
-    echo "Moving new configuration..."
+# Function to handle the final steps of the setup
+final_setup_steps() {
+    echo "Finalizing setup..."
 
-    # Avoid overwriting the entire .config directory by using rsync or moving specific subdirectories
-    rsync -avh --ignore-existing "$BASE_DIR/" "$CONFIG_DIR/" --exclude setup.sh
-
-    if [ $? -ne 0 ]; then
-        echo "Error: Could not move the new configuration."
+    # Move new configuration files from the temp directory
+    if [ -d "$SCRIPT_DIR" ]; then
+        echo "Moving new configuration files to $CONFIG_DIR"
+        mv "$SCRIPT_DIR"/* "$SCRIPT_DIR"/.[!.]* "$CONFIG_DIR"
+    else
+        echo "Error: Temporary configuration directory does not exist."
         exit 1
     fi
+
+    # Cleanup temp directory
+    if [ -d "$SCRIPT_DIR" ]; then
+        echo "Cleaning up temporary directory."
+        rm -rf "$SCRIPT_DIR"
+    fi
+
+    echo "Setup completed successfully."
 }
 
 # Main script execution
 main() {
-    cleanup
+    clean_old_configs
     setup_tmux
-    move_configuration
-
-    echo "Configuration applied successfully."
+    final_setup_steps
 }
 
 # Invoke the script
