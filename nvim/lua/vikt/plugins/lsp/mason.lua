@@ -59,7 +59,8 @@ return {
                 "eslint_d", -- js linter
                 "shellcheck",
                 "shfmt",
-
+                "jq",
+                "cspell",
                 "bash-language-server",
                 -- "csharpier",
                 -- "semgrep",
