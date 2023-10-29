@@ -12,10 +12,18 @@ DESTINATION_FILE="$HOME/.tmux.conf"
 # Remove specific directories
 cleanup() {
     echo "Cleaning up existing configuration directories..."
-    local dirs=( "nvim" "vscode" ".git" "tmux" )  # Directories within $CONFIG_DIR to remove
 
-    for dir in "${dirs[@]}"; do
-        dir_path="$CONFIG_DIR/$dir"
+    # Directories to remove. Note that these are absolute paths.
+    local dirs=( 
+        "$HOME/.config_temp" 
+        "$HOME/.config/nvim" 
+        "$HOME/.local/share/nvim" 
+        "$HOME/.config/vscode" 
+        "$HOME/.config/.git"  # This was previously incorrectly specified without the leading dot
+        "$HOME/.config/tmux" 
+    )
+
+    for dir_path in "${dirs[@]}"; do
         if [ -d "$dir_path" ]; then
             echo "Removing $dir_path"
             rm -rf "$dir_path"
@@ -38,6 +46,7 @@ cleanup() {
         fi
     fi
 }
+
 
 # Setup tmux configuration
 setup_tmux() {
