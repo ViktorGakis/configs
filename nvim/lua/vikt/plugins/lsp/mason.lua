@@ -40,6 +40,7 @@ return {
                 "ruff_lsp",
                 -- "omnisharp",
                 -- "csharp-language-server",
+                --
             },
             -- auto-install configured servers (with lspconfig)
             automatic_installation = true, -- not the same as ensure_installed
@@ -56,6 +57,10 @@ return {
                 "mypy",
                 "debugpy",
                 "eslint_d", -- js linter
+                "shellcheck",
+                "shfmt",
+
+                "bash-language-server",
                 -- "csharpier",
                 -- "semgrep",
                 -- "netcoredbg",

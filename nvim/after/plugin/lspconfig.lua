@@ -118,6 +118,17 @@ lspconfig["ruff_lsp"].setup({
     capabilities = capabilities,
     on_attach = on_attach,
 })
+
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "sh",
+    callback = function()
+        vim.lsp.start({
+            name = "bash-language-server",
+            cmd = { "bash-language-server", "start" },
+        })
+    end,
+})
+--
 --
 -- lspconfig["csharp-language-server"].setup({
 --     capabilities = capabilities,
