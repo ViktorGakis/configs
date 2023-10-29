@@ -131,12 +131,12 @@ lspconfig.yamlls.setup({
 
 -- lspconfig.lua_ls.setup(lsp.nvim_lua_ls())
 
-lspconfig.omnisharp.setup({
-    enable_roslyn_analysers = true,
-    enable_import_completion = true,
-    organize_imports_on_format = true,
-    filetypes = { "cs", "vb", "csproj", "sln", "slnx", "props" },
-})
+-- lspconfig.omnisharp.setup({
+--     enable_roslyn_analysers = true,
+--     enable_import_completion = true,
+--     organize_imports_on_format = true,
+--     filetypes = { "cs", "vb", "csproj", "sln", "slnx", "props" },
+-- })
 
 lspconfig.lua_ls.setup(lsp.nvim_lua_ls())
 
@@ -374,17 +374,17 @@ vim.api.nvim_create_autocmd("LspAttach", {
             return string.gsub(str, "%s*[- ]%s*", "_")
         end
 
-        if client.name == "omnisharp" then
-            local tokenModifiers = client.server_capabilities.semanticTokensProvider.legend.tokenModifiers
-            for i, v in ipairs(tokenModifiers) do
-                tokenModifiers[i] = toSnakeCase(v)
-            end
-            local tokenTypes = client.server_capabilities.semanticTokensProvider.legend.tokenTypes
-            for i, v in ipairs(tokenTypes) do
-                tokenTypes[i] = toSnakeCase(v)
-            end
-        end
-
+        -- if client.name == "omnisharp" then
+        --     local tokenModifiers = client.server_capabilities.semanticTokensProvider.legend.tokenModifiers
+        --     for i, v in ipairs(tokenModifiers) do
+        --         tokenModifiers[i] = toSnakeCase(v)
+        --     end
+        --     local tokenTypes = client.server_capabilities.semanticTokensProvider.legend.tokenTypes
+        --     for i, v in ipairs(tokenTypes) do
+        --         tokenTypes[i] = toSnakeCase(v)
+        --     end
+        -- end
+        --
         -- Below are separate from the above
 
         -- local null = require("null-ls")
