@@ -25,7 +25,7 @@ map("x", "p", 'p:let @+=@0<CR>:let @"=@0<CR>', { desc = "Dont copy replaced text
 
 -- map("n", "<leader>fm", format_func, { desc = "LSP formatting" })
 map("n", "<C-s>", "<leader>mp<cmd> w <CR>", { desc = "Format and Save" })
-map("i", "<C-s>", "<ESC><leader>mp<cmd> w <CR>i", { desc = "Format and Save" })
+map("i", "<C-s>", "<ESC><leader>mp<cmd> w <CR>", { desc = "Format and Save" })
 -- delete single character without copying into register
 map("n", "x", '"_x')
 

@@ -109,11 +109,25 @@ lspconfig["emmet_ls"].setup({
 })
 
 -- configure python server
+-- https://github.com/microsoft/pyright/blob/main/docs/settings.md
+-- https://github.com/microsoft/pyright/blob/main/docs/configuration.md#type-check-diagnostics-settings
 lspconfig["pyright"].setup({
     capabilities = capabilities,
     on_attach = on_attach,
+    settings = {
+        pyright = { autoImportCompletion = true },
+        python = {
+            analysis = {
+                autoSearchPaths = true,
+                extraPaths = { "./" },
+                typeshedPaths = { "./" },
+                diagnosticMode = "openFilesOnly",
+                useLibraryCodeForTypes = true,
+                typeCheckingMode = "off",
+            },
+        },
+    },
 })
-
 lspconfig["ruff_lsp"].setup({
     capabilities = capabilities,
     on_attach = on_attach,
