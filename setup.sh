@@ -1,18 +1,18 @@
 #!/bin/bash
 
-# Set the temporary directory and repository URL
-TEMP_DIR="$HOME/.config_temp"
-REPO_URL="https://github.com/ViktorGakis/dotfiles.git"
+# Set the base directories
+BASE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" &>/dev/null && pwd)"
+CONFIG_DIR="$HOME/.config"
 PLUGINS_DIR="$HOME/.tmux/plugins/"
 
 # Paths for the tmux configuration
-SOURCE_FILE="$TEMP_DIR/tmux/tmux.conf"
+SOURCE_FILE="$BASE_DIR/tmux/tmux.conf"
 DESTINATION_FILE="$HOME/.tmux.conf"
 
-# Remove existing configurations
+# Remove specific directories
 cleanup() {
     echo "Cleaning up existing configuration directories..."
-    local dirs=( "$HOME/.config/nvim" "$HOME/.config/vscode" "$HOME/.config/.git" "$HOME/.config/tmux" "$PLUGINS_DIR" "$TEMP_DIR" )
+    local dirs=( "$CONFIG_DIR/nvim" "$CONFIG_DIR/vscode" "$CONFIG_DIR/.git" "$CONFIG_DIR/tmux" "$PLUGINS_DIR" )
 
     for dir in "${dirs[@]}"; do
         if [ -d "$dir" ]; then
@@ -21,14 +21,7 @@ cleanup() {
     done
 }
 
-# Clone the repository
-clone_repo() {
-    echo "Cloning repository..."
-    mkdir -p "$TEMP_DIR"
-    git clone --depth 1 "$REPO_URL" "$TEMP_DIR"
-}
-
-# Setup tmux
+# Setup tmux configuration
 setup_tmux() {
     echo "Setting up tmux..."
 
@@ -56,21 +49,21 @@ setup_tmux() {
 # Move the cloned configuration to the appropriate directory
 move_configuration() {
     echo "Moving new configuration..."
-    mkdir -p "$HOME/.config"
-    mv "$TEMP_DIR"/* "$TEMP_DIR"/.[!.]* "$HOME/.config"  # This line moves hidden files as well
+
+    # Avoid overwriting the entire .config directory by using rsync or moving specific subdirectories
+    rsync -avh --ignore-existing "$BASE_DIR/" "$CONFIG_DIR/" --exclude setup.sh
+
+    if [ $? -ne 0 ]; then
+        echo "Error: Could not move the new configuration."
+        exit 1
+    fi
 }
 
 # Main script execution
 main() {
     cleanup
-    clone_repo
     setup_tmux
     move_configuration
-
-    # Final cleanup: Remove the temporary directory if it's still present
-    if [ -d "$TEMP_DIR" ]; then
-        rm -rf "$TEMP_DIR"
-    fi
 
     echo "Configuration applied successfully."
 }
