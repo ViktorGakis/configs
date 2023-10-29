@@ -26,7 +26,7 @@ vim.g.dotnet_build_project = function()
     end
 end
 
-function findDLLs(path)
+local function findDLLs(path)
     local dllFiles = {}                                         -- Table to store the .dll file paths
     local command = "find " .. path .. " -type f -name '*.dll'" -- Command to execute
 
