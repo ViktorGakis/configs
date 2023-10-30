@@ -80,6 +80,7 @@ final_setup_steps() {
 
 # Main script execution
 main() {
+    mkdir -p CONFIG_DIR
     clean_old_configs
     setup_tmux
     final_setup_steps
