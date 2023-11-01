@@ -57,7 +57,7 @@ return {
                 -- diagnostics.semgrep,
                 --
                 diagnostics.pylint.with({
-                    extra_args = { "--disable", "c0114,c0115,c0116,c0301,w1203,w0703" },
+                    extra_args = { "--disable", "C0114,c0115,c0116,c0301,w1203,w0703" },
                 }),
                 diagnostics.codespell.with({ filetypes = { "python" } }),
                 diagnostics.mypy,

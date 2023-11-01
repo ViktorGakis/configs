@@ -115,16 +115,36 @@ lspconfig["pyright"].setup({
     capabilities = capabilities,
     on_attach = on_attach,
     settings = {
-        pyright = { autoImportCompletion = true },
+        pyright = {
+            autoImportCompletion = true,
+        },
         python = {
             analysis = {
+                include = { "src/**/*.py" },
+                exclude = { "**/node_modules/**", "**/__pycache__/**" },
                 autoSearchPaths = true,
                 extraPaths = { "./" },
                 typeshedPaths = { "./" },
                 diagnosticMode = "openFilesOnly",
                 useLibraryCodeForTypes = true,
                 typeCheckingMode = "off",
+                reportMissingTypeStubs = false,
+                portOptionalSubscript = "error",
+                strict = false,
+                strictFunctionTypes = false,
+                useLibraryCodeForTypes = true,
+                reportUndefinedVariable = false,
             },
+            -- diagnostics = {
+            --     extra_args = { "--disable", "c0114,c0115,c0116,c0301,w1203,w0703" },
+            --     textDocument = {
+            --         publishDiagnostics = {
+            --             tagSupport = {
+            --                 valueSet = { 2 },
+            --             },
+            --         },
+            --     },
+            -- },
         },
     },
 })
