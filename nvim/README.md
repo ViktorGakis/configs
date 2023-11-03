@@ -11,3 +11,4 @@ bash ~/.config_temp/setup.sh
 1. add tabufline
 1. add theme switcher
 1. Fix python debugger
+1. Add harpoon v2
