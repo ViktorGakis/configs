@@ -13,9 +13,14 @@ return {
         config = function()
             -- #060217
             -- #1a1a1a
-            local clr = "#060217"
+            -- #0f0f0f
+            -- #030302
+            local clr = "#030302"
             local bg = clr
             local bg_dark = clr
+            -- #4A306D
+            -- "#143652"
+            -- #443266
             local bg_highlight = "#143652"
             -- local bg_search = "#0A64AC"
             -- local bg_visual = "#275378"

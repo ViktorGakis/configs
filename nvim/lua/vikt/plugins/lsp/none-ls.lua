@@ -15,11 +15,11 @@ return {
         mason_null_ls.setup({
             ensure_installed = {
                 "prettier", -- prettier formatter
-                "stylua", -- lua formatter
-                "black", -- python formatter
+                "stylua",   -- lua formatter
+                "black",    -- python formatter
                 "ruff",
                 "mypy",
-                "pylint", -- python linter
+                "pylint",   -- python linter
                 "eslint_d", -- js linter
                 -- "csharpier",
                 -- "semgrep", -- C# linter
@@ -27,7 +27,7 @@ return {
         })
         local code_actions = null_ls.builtins.code_actions
         -- for conciseness
-        local formatting = null_ls.builtins.formatting -- to setup formatters
+        local formatting = null_ls.builtins.formatting   -- to setup formatters
         local diagnostics = null_ls.builtins.diagnostics -- to setup linters
 
         -- to setup format on save
@@ -44,9 +44,10 @@ return {
                 --  "formatting.prettier.with({disabled_filetypes: {}})" (see null-ls docs)
                 code_actions.shellcheck,
                 code_actions.cspell,
+                code_actions.marksman,
                 formatting.prettier.with({
                     extra_filetypes = { "svelte" },
-                }), -- js/ts formatter
+                }),                -- js/ts formatter
                 formatting.stylua, -- lua formatter
                 formatting.isort,
                 formatting.black,
@@ -56,6 +57,8 @@ return {
                 -- formatting.csharpier,
                 -- diagnostics.semgrep,
                 --
+                formatting.marksman,
+                diagnostics.marksman,
                 diagnostics.pylint.with({
                     extra_args = { "--disable", "C0114,c0115,c0116,c0301,w1203,w0703" },
                 }),
@@ -65,7 +68,7 @@ return {
                     extra_args = { "--ignore", "e501", "--select", "e126" },
                 }),
                 diagnostics.shellcheck,
-                diagnostics.eslint_d.with({ -- js/ts linter
+                diagnostics.eslint_d.with({                                                               -- js/ts linter
                     condition = function(utils)
                         return utils.root_has_file({ ".eslintrc.js", ".eslintrc.cjs", ".eslintrc.json" }) -- only enable if root has .eslintrc.js or .eslintrc.cjs
                     end,

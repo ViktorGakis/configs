@@ -112,6 +112,30 @@ lspconfig["emmet_ls"].setup({
     on_attach = on_attach,
     filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less", "svelte" },
 })
+lspconfig["marksman"].setup({
+    capabilities = capabilities,
+    on_attach = on_attach,
+    filetypes = { "markdown", "text" },
+})
+
+lspconfig.eslint.setup({
+    -- ...
+    capabilities = capabilities,
+    on_attach = function(client, bufnr)
+        -- Call the pre-existing `on_attach` function if it exists
+        if type(on_attach) == "function" then
+            on_attach(client, bufnr)
+        end
+
+        -- Your additional functionality
+        vim.api.nvim_create_autocmd("BufWritePre", {
+            buffer = bufnr,
+            command = "EslintFixAll",
+        })
+
+        -- Any additional setup code can go here
+    end,
+})
 
 -- lspconfig["pylsp"].setup({
 --     on_attach = on_attach,
