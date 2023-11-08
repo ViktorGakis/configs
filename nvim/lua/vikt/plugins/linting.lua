@@ -4,21 +4,21 @@ return {
     event = { "BufReadPre", "BufNewFile" }, -- to disable, comment this out
     config = function()
         local lint = require("lint")
-        local eslint = {
-            lintCommand = "!eslint_d -f unix --stdin --stdin-filename ${INPUT}",
-            lintStdin = true,
-            lintFormats = { "%f:%l:%c: %m" },
-            lintIgnoreExitCode = true,
-            formatCommand = "!eslint_d --fix-to-stdout --stdin --stdin-filename=${INPUT}",
-            formatStdin = true,
-        }
+        -- local eslint_d = {
+        --     lintCommand = "!eslint_d -f unix --stdin --stdin-filename ${INPUT}",
+        --     lintStdin = true,
+        --     lintFormats = { "%f:%l:%c: %m" },
+        --     lintIgnoreExitCode = true,
+        --     formatCommand = "!eslint_d --fix-to-stdout --stdin --stdin-filename=${INPUT}",
+        --     formatStdin = true,
+        -- }
         lint.linters_by_ft = {
-            javascript = { "eslint_d" },
-            javascriptreact = { "eslint_d" },
-            ["javascript.jsx"] = { "eslint_d" },
-            typescript = { "eslint_d" },
-            ["typescript.tsx"] = { "eslint_d" },
-            typescriptreact = { "eslint_d" },
+            -- javascript = { "eslint_d" },
+            -- javascriptreact = { "eslint_d" },
+            -- ["javascript.jsx"] = { "eslint_d" },
+            -- typescript = { "eslint_d" },
+            -- ["typescript.tsx"] = { "eslint_d" },
+            -- typescriptreact = { "eslint_d" },
             -- svelte = { "eslint_d" },
             python = { "pylint" },
         }

@@ -40,7 +40,12 @@ return {
                 "ruff_lsp",
                 -- "omnisharp",
                 -- "csharp-language-server",
-                --
+                "eslint",
+                "bashls",
+                "cssmodules_ls",
+                "jsonls",
+                "yamlls",
+                "tailwindcss",
             },
             -- auto-install configured servers (with lspconfig)
             automatic_installation = true, -- not the same as ensure_installed
