@@ -86,3 +86,5 @@ vim.opt.listchars:append("eol:↴")
 vim.api.nvim_set_keymap("n", "<leader>es", "<cmd> set invlist <CR>", { desc = "Show whitespaces" })
 -- vim.opt.listchars:append("extends:'▶'")
 -- vim.opt.listchars:append("precedes:'◀'")
+--
+o.spell = true
