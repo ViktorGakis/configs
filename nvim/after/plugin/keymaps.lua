@@ -41,17 +41,17 @@ map("n", "<leader>ch", "<cmd> NvCheatsheet <CR>", { desc = "Mapping cheatsheet" 
 -- TABUFLINE
 --
 -- cycle through buffers
-map("n", "<tab>", function()
-    require("nvchad.tabufline").tabuflineNext()
-end, { desc = "Goto next buffer" })
-
-map("n", "<S-tab>", function()
-    require("nvchad.tabufline").tabuflinePrev()
-end, { desc = "Goto prev buffer" })
--- close buffer + hide terminal buffer
-map("n", "<leader>x", function()
-    require("nvchad.tabufline").close_buffer()
-end, { desc = "Close buffer" })
+-- map("n", "<tab>", function()
+--     require("nvchad.tabufline").tabuflineNext()
+-- end, { desc = "Goto next buffer" })
+--
+-- map("n", "<S-tab>", function()
+--     require("nvchad.tabufline").tabuflinePrev()
+-- end, { desc = "Goto prev buffer" })
+-- -- close buffer + hide terminal buffer
+-- map("n", "<leader>x", function()
+--     require("nvchad.tabufline").close_buffer()
+-- end, { desc = "Close buffer" })
 
 ---- comment
 --

@@ -24,8 +24,8 @@ map(
 map("x", "p", 'p:let @+=@0<CR>:let @"=@0<CR>', { desc = "Dont copy replaced text", silent = true })
 
 -- map("n", "<leader>fm", format_func, { desc = "LSP formatting" })
-map("n", "<C-s>", "<leader>mp<cmd> w <CR>", { desc = "Format and Save" })
-map("i", "<C-s>", "<ESC><leader>mp<cmd> w <CR>", { desc = "Format and Save" })
+map("n", "<C-s>", "m`<leader>mpkj:w<CR>``", { desc = "Format and Save" })
+map("i", "<C-s>", "<ESC>m`<leader>mpkj:w<CR>``", { desc = "Format and Save" })
 -- delete single character without copying into register
 map("n", "x", '"_x')
 
@@ -38,7 +38,7 @@ map("n", "<leader>ec", "<cmd>e ~/.config/nvim/ <CR>", { desc = "   Configurat
 
 map("i", "jk", "<ESC>", { desc = "Exit insert mode with jk" })
 
-map("i", "<C-e>", "<End>", { desc = "End of line" })
+map("i", "<C-d>", "<End>", { desc = "End of line" })
 map("i", "<C-b>", "<ESC>^i", { desc = "Beginning of line" })
 
 map("i", "<C-h>", "<Left>", { desc = "Move left" })
