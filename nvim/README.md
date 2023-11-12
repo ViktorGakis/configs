@@ -12,7 +12,6 @@ bash ~/.config_temp/setup.sh
 1. add theme switcher
 1. Fix python debugger
 1. Add harpoon v2
-2. Add jsx support 
+1. Add jsx support
 1. Make eslint_d work
-1. Reconfigure cmp
-1. Add flash.vim
+
