@@ -1,24 +1,23 @@
 -- https://github.com/hrsh7th/nvim-cmp/wiki/List-of-sources
 local cmp = require("cmp")
-local cmp_select = { behavior = cmp.SelectBehavior.Select }
-local luasnip = require("luasnip")
 local zero = require("lsp-zero")
 -- local lsp = zero.preset({})
 local lsp = zero.preset("recommended")
 local lspkind = require("lspkind")
 local lspconfig = require("lspconfig")
+-- import nvim-autopairs completion functionality
 
 local schemas = require("schemastore")
 
-local source_mapping = {
-    buffer = "[Buffer]",
-    nvim_lsp = "[LSP]",
-    luasnip = "[Lua]",
-    vsnip = "[Vsnip]",
-    path = "[Path]",
-    ultisnips = "[Usnip]",
-}
-
+-- local source_mapping = {
+--     buffer = "[Buffer]",
+--     nvim_lsp = "[LSP]",
+--     luasnip = "[Lua]",
+--     vsnip = "[Vsnip]",
+--     path = "[Path]",
+--     ultisnips = "[Usnip]",
+-- }
+--
 -- loads vscode style snippets from installed plugins (e.g. friendly-snippets)
 require("luasnip.loaders.from_vscode").lazy_load()
 
@@ -116,7 +115,7 @@ lspconfig.yamlls.setup({
     },
 })
 
-lspconfig.lua_ls.setup(lsp.nvim_lua_ls())
+-- lspconfig.lua_ls.setup(lsp.nvim_lua_ls())
 
 vim.diagnostic.config({
     virtual_lines = false,
@@ -136,6 +135,8 @@ lsp.setup()
 vim.api.nvim_create_autocmd("LspAttach", {
     callback = function(ev)
         require("lsp_lines").setup()
+
+        local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 
         local luasnip = require("luasnip")
         luasnip.config.set_config({
@@ -227,6 +228,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
         local cmp_action = zero.cmp_action()
 
+        -- make autopairs and completion work together
+        cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
         cmp.setup({
             completion = {
                 completeopt = "menu,menuone,preview,noselect",
@@ -259,16 +262,15 @@ vim.api.nvim_create_autocmd("LspAttach", {
                 end,
             },
             formatting = {
-                fields = { "abbr", "kind", "menu" },
-                format = require("lspkind").cmp_format({
-                    mode = "symbol_text",
-                    maxwidth = 50,
-                    ellipsis_char = "...",
-                }),
+                fields = { "kind", "abbr", "menu" },
+                format = function(entry, vim_item)
+                    local kind = lspkind.cmp_format({ mode = "symbol_text", maxwidth = 50 })(entry, vim_item)
+                    local strings = vim.split(kind.kind, "%s", { trimempty = true })
+                    kind.kind = " " .. (strings[1] or "") .. " "
+                    kind.menu = "    (" .. (strings[2] or "") .. ")"
+                    return kind
+                end,
             },
-            -- sources = {
-            -- 	name = 'nvim_lsp'
-            -- }
             cmp.setup.cmdline("/", {
                 mapping = cmp.mapping.preset.cmdline(),
                 sources = { { name = "nvim_lsp_document_symbol" }, { name = "buffer" } },
