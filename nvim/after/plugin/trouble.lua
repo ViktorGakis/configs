@@ -10,3 +10,9 @@ vim.keymap.set("n", "<leader>ld", ":TroubleToggle document_diagnostics<CR>", { d
 vim.keymap.set("n", "<leader>ll", ":TroubleToggle loclist<CR>", { desc = "Toggle Locallist" })
 vim.keymap.set("n", "<leader>lw", ":TroubleToggle workspace_diagnostics<CR>", { desc = "Toggle Workspace Diagnostics" })
 vim.keymap.set("n", "<leader>lr", ":TroubleToggle lsp_references<CR>", { desc = "Toggle LSP References" })
+vim.keymap.set(
+    { "n", "v" },
+    "<leader>la",
+    require("actions-preview").code_actions,
+    { desc = "Toggle LSP code actions" }
+)

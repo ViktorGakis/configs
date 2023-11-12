@@ -287,6 +287,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
                     -- vim.fn["vsnip#anonymous"](args.body)
                 end,
             },
+            -- https://github.com/hrsh7th/nvim-cmp/wiki/Menu-Appearance
             formatting = {
                 fields = { "abbr", "kind", "menu" },
                 format = function(entry, vim_item)

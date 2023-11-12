@@ -35,6 +35,7 @@ map("i", "<M-BS>", "<cmd>norm! db<CR><cmd>star!<CR>")
 map("n", "<M-BS>", "db")
 
 map("n", "<leader>ec", "<cmd>e ~/.config/nvim/ <CR>", { desc = "   Configuration" })
+
 -- General Keymaps -------------------
 
 map("i", "jk", "<ESC>", { desc = "Exit insert mode with jk" })
@@ -47,38 +48,33 @@ map("i", "<C-l>", "<Right>", { desc = "Move right" })
 map("i", "<C-j>", "<Down>", { desc = "Move down" })
 map("i", "<C-k>", "<Up>", { desc = "Move up" })
 
--- clear search highlights
+---- clear search highlights
 map("n", "<Esc>", ":nohl<CR>", { desc = "Clear search highlights" })
--- switch between windows
-map("n", "<C-h>", "<C-w>h", { desc = "Window left" })
-map("n", "<C-l>", "<C-w>l", { desc = "Window right" })
-map("n", "<C-j>", "<C-w>j", { desc = "Window down" })
-map("n", "<C-k>", "<C-w>k", { desc = "Window up" })
 
--- map("n", "<C-h>", "<cmd> TmuxNavigateLeft<CR>", { desc = "Tmux Window left" })
--- map("n", "<C-l>", "<cmd> TmuxNavigateRight<CR>", { desc = "Tmux Window right" })
--- map("n", "<C-j>", "<cmd> TmuxNavigateDown<CR>", { desc = "Tmux Window down" })
--- map("n", "<C-k>", "<cmd> TmuxNavigateUp<CR>", { desc = "Tmux Window up" })
-
--- Allow moving cursor through wrapped lines
+---- Allow moving cursor through wrapped lines
 map("n", "j", 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', { desc = "Move down", expr = true })
 map("n", "k", 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', { desc = "Move up", expr = true })
 map("n", "<Up>", 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', { desc = "Move up", expr = true })
 map("n", "<Down>", 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', { desc = "Move down", expr = true })
 
--- increment/decrement numbers
+---- increment/decrement numbers
 map("n", "<leader>+", "<C-a>", { desc = "Increment number" }) -- increment
 map("n", "<leader>-", "<C-x>", { desc = "Decrement number" }) -- decrement
+
+---- switch between windows
+-- map("n", "<C-h>", "<C-w>h", { desc = "Window left" })
+-- map("n", "<C-l>", "<C-w>l", { desc = "Window right" })
+-- map("n", "<C-j>", "<C-w>j", { desc = "Window down" })
+-- map("n", "<C-k>", "<C-w>k", { desc = "Window up" })
 
 ---- window management
 map("n", "<leader>wv", "<C-w>v", { desc = "Split window vertically" })
 map("n", "<leader>wh", "<C-w>s", { desc = "Split window horizontally" })
 map("n", "<leader>we", "<C-w>=", { desc = "Make splits equal size" })
-map("n", "<leader>wx", "<cmd>close<CR>", { desc = "Close current split" })
+map("n", "<leader>wq", "<cmd>close<CR>", { desc = "Close current split" })
 map("n", "<leader>to", "<cmd>tabnew<CR>", { desc = "Open new tab" })
 map("n", "<leader>tx", "<cmd>tabclose<CR>", { desc = "Close current tab" })
-map("n", "<leader><tab>", "<cmd>tabn<CR>", { desc = "Go to next tab" })
-map("n", "<leader>tp", "<cmd>tabp<CR>", { desc = "Go to previous tab" })
+
 map("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer in new tab" })
 
 map("n", "<leader>wm", "<cmd>MaximizerToggle<CR>", { desc = "Maximize/minimize a split" })

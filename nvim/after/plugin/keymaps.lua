@@ -2,8 +2,13 @@
 local map = vim.keymap.set
 local g = vim.g
 
-g.mapleader = " "
 g.maplocalleader = " "
+g.mapleader = " "
+---- TMUX-NAVIGATOR
+map("n", "<C-h>", "<cmd> TmuxNavigateLeft<CR>", { desc = "Tmux Window left" })
+map("n", "<C-l>", "<cmd> TmuxNavigateRight<CR>", { desc = "Tmux Window right" })
+map("n", "<C-j>", "<cmd> TmuxNavigateDown<CR>", { desc = "Tmux Window down" })
+map("n", "<C-k>", "<cmd> TmuxNavigateUp<CR>", { desc = "Tmux Window up" })
 
 ---- NVIMTREE
 map("n", "<C-n>", "<cmd> NvimTreeToggle <CR>", { desc = "Toggle nvimtree" })
@@ -24,7 +29,7 @@ map("n", "<leader>fc", "<cmd> Telescope commands <CR>", { desc = "Find commands"
 map("n", "<leader>fo", "<cmd> Telescope options <CR>", { desc = "Find options" })
 map("n", "<leader>fr", "<cmd> Telescope registers <CR>", { desc = "Find registers" })
 map("n", "<leader>fl", "<cmd> Telescope lsp_document_symbols <CR>", { desc = "Find Lsp Symbols" })
-
+map("n", "<leader>fm", "<cmd> Telescope marks <CR>", { desc = "Find bookmarks" })
 -- git
 map("n", "<leader>gm", "<cmd> Telescope git_commits <CR>", { desc = "Git commits" })
 
@@ -72,8 +77,6 @@ map("n", "<leader>gs", "<cmd>Neogit kind=vsplit<CR>", { desc = "Open Neogit in v
 --
 map("n", "<leader>th", "<cmd> Telescope themes <CR>", { desc = "Nvchad themes" })
 
-map("n", "<leader>ma", "<cmd> Telescope marks <CR>", { desc = "telescope bookmarks" })
-
 map("n", "<leader>m1", "<cmd>CellularAutomaton make_it_rain<CR>", { desc = "Liquify window1" })
 map("n", "<leader>m2", "<cmd>CellularAutomaton game_of_life<CR>", { desc = "Liquify window2" })
 
@@ -87,11 +90,8 @@ map("n", "<M-k>", ":m .-2<CR>==", { silent = true })
 -- map("n", "<M-k>", ":m '<-2<CR>gv-gv", { silent = true })
 
 -- Better indenting in Visual mode
-map("v", ">", ">gv")
-map("v", "<", "<gv")
-
-map({ "n", "v" }, "<leader>la", require("actions-preview").code_actions)
-map({ "v", "n" }, "<leader>cr", require("actions-preview").code_actions)
+map("v", "tab", ">gv")
+map("v", "<S-tab>", "<gv")
 
 -- Function to toggle space visibility in listchars
 -- function toggle_space_in_listchars()
