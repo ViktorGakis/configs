@@ -120,4 +120,14 @@ return {
     { "kevinhwang91/nvim-ufo",       dependencies = "kevinhwang91/promise-async" },
     { "tzachar/local-highlight.nvim" },
     { "folke/flash.nvim",            event = "VeryLazy" },
+    {
+        "ThePrimeagen/refactoring.nvim",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "nvim-treesitter/nvim-treesitter",
+        },
+        config = function()
+            require("refactoring").setup()
+        end,
+    },
 }
