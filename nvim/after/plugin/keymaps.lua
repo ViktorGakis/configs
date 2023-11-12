@@ -35,7 +35,7 @@ map("n", "<leader>pt", "<cmd> Telescope terms <CR>", { desc = "Pick hidden term"
 map("n", "<leader>wr", "<cmd>SessionRestore<CR>", { desc = "Restore session for cwd" })             -- restore last workspace session for current directory
 map("n", "<leader>ws", "<cmd>SessionSave<CR>", { desc = "Save session for auto session root dir" }) -- save workspace session for current working directory
 --
-map("n", "<leader>b", "<cmd> enew <CR>", { desc = "New buffer" })
+-- map("n", "<leader>b", "<cmd> enew <CR>", { desc = "New buffer" })
 map("n", "<leader>ch", "<cmd> NvCheatsheet <CR>", { desc = "Mapping cheatsheet" })
 
 -- TABUFLINE

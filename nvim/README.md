@@ -14,4 +14,4 @@ bash ~/.config_temp/setup.sh
 1. Add harpoon v2
 1. Add jsx support
 1. Make eslint_d work
-
+1. Reconfig nvimtree keymaps

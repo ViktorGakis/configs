@@ -227,8 +227,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
         require("luasnip.loaders.from_vscode").lazy_load()
 
         local cmp_action = zero.cmp_action()
-
         -- make autopairs and completion work together
+        --
         cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
         cmp.setup({
             completion = {
@@ -240,10 +240,36 @@ vim.api.nvim_create_autocmd("LspAttach", {
                 documentation = cmp.config.window.bordered(),
             },
             mapping = {
-                ["<Tab"] = cmp_action.tab_complete(),
-                ["<S-Tab>"] = cmp_action.select_prev_or_fallback(),
-                ["<C-Space>"] = cmp.mapping.complete({ select = true }), -- show completion suggestions
-                ["<C-e>"] = cmp.mapping.abort({ select = true }),        -- close completion window<c-e><C-e>
+                ["<C-y>"] = cmp.config.disable,
+                -- ["<C-e>"] = cmp.config.disable,
+                ["Tab"] = cmp.mapping(function(fallback)
+                    if cmp.visible() then
+                        cmp.select_next_item()
+                        -- elseif vim.fn["vsnip#available"](1) then
+                        --     vim.fn.feedkeys(t("<Plug>(vsnip-expand-or-jump)", ""))
+                    else
+                        fallback()
+                    end
+                end, {
+                    "i",
+                    "s",
+                }),
+                ["<S-Tab>"] = cmp.mapping(function(fallback)
+                    if cmp.visible() then
+                        cmp.select_prev_item()
+                        -- elseif vim.fn["vsnip#available"](1) then
+                        --     vim.fn.feedkeys(t("<Plug>(vsnip-expand-or-jump)", ""))
+                    else
+                        fallback()
+                    end
+                end, {
+                    "i",
+                    "s",
+                }),
+                ["<C-e>"] = cmp.mapping({
+                    i = cmp.mapping.abort(),
+                    c = cmp.mapping.close(),
+                }),
                 ["<CR>"] = cmp.mapping.confirm({ select = true }),
                 -- check if the below <c-l> is needed. It was added as a test
             },

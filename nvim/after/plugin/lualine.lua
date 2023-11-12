@@ -44,7 +44,7 @@ local colors = {
     red = "#FF4A4A",
     fg = "#c3ccdc",
     -- bg = "#112638",
-    bg = "#000",
+    bg = "#15173d",
     inactive_bg = "#2c3043",
 }
 
