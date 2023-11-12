@@ -71,9 +71,9 @@ map("n", "<leader>-", "<C-x>", { desc = "Decrement number" }) -- decrement
 map("n", "<leader>wv", "<C-w>v", { desc = "Split window vertically" })
 map("n", "<leader>wh", "<C-w>s", { desc = "Split window horizontally" })
 map("n", "<leader>we", "<C-w>=", { desc = "Make splits equal size" })
-map("n", "<leader>wq", "<cmd>close<CR>", { desc = "Close current split" })
 map("n", "<leader>to", "<cmd>tabnew<CR>", { desc = "Open new tab" })
 map("n", "<leader>tx", "<cmd>tabclose<CR>", { desc = "Close current tab" })
+map("n", "<leader>wq", "<cmd>close<CR>", { desc = "Close current split" })
 
 map("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer in new tab" })
 

@@ -9,6 +9,8 @@ map("n", "<C-h>", "<cmd> TmuxNavigateLeft<CR>", { desc = "Tmux Window left" })
 map("n", "<C-l>", "<cmd> TmuxNavigateRight<CR>", { desc = "Tmux Window right" })
 map("n", "<C-j>", "<cmd> TmuxNavigateDown<CR>", { desc = "Tmux Window down" })
 map("n", "<C-k>", "<cmd> TmuxNavigateUp<CR>", { desc = "Tmux Window up" })
+-- " If the tmux window is zoomed, keep it zoomed when moving from Vim to another pane
+g.tmux_navigator_preserve_zoom = 1
 
 ---- NVIMTREE
 map("n", "<C-n>", "<cmd> NvimTreeToggle <CR>", { desc = "Toggle nvimtree" })
@@ -81,8 +83,8 @@ map("n", "<leader>m1", "<cmd>CellularAutomaton make_it_rain<CR>", { desc = "Liqu
 map("n", "<leader>m2", "<cmd>CellularAutomaton game_of_life<CR>", { desc = "Liquify window2" })
 
 -- Move current line / block with Alt-j/k a la vscode.
-map("n", "<M-j>", ":m .+1<CR>==", { silent = true })
-map("n", "<M-k>", ":m .-2<CR>==", { silent = true })
+-- map("v", "<M-j>", ":m .+1<CR>==", { silent = true })
+-- map("v", "<M-k>", ":m .-2<CR>==", { silent = true })
 -- map("n", "<C-a>", "ggVG", { desc = "Select All Lines" })
 
 -- Better line / block movement
@@ -90,8 +92,8 @@ map("n", "<M-k>", ":m .-2<CR>==", { silent = true })
 -- map("n", "<M-k>", ":m '<-2<CR>gv-gv", { silent = true })
 
 -- Better indenting in Visual mode
-map("v", "tab", ">gv")
-map("v", "<S-tab>", "<gv")
+map("v", "<Tab>", ">gv")
+map("v", "<S-Tab>", "<gv")
 
 -- Function to toggle space visibility in listchars
 -- function toggle_space_in_listchars()

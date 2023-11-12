@@ -14,10 +14,6 @@ require("bufferline").setup({
 })
 
 local map = vim.keymap.set
--- local g = vim.g
---
--- g.mapleader = " "
--- g.maplocalleader = " "
 
 map("n", "<leader>bb", ":BufferLinePick <CR>", { desc = "Pick Buffer" })
 map("n", "<Tab>", ":BufferLineCycleNext <CR>", { desc = "Next Buffer", silent = true })
@@ -30,7 +26,7 @@ map(
 )
 map(
     "n",
-    "<leader>b-1",
+    "<leader>b2",
     ":lua require'bufferline'.move_to(-1)<CR>",
     { desc = "Move Buffer to -1", silent = true, noremap = true }
 )
