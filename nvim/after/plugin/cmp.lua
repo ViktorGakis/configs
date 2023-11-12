@@ -23,18 +23,18 @@ require("luasnip.loaders.from_vscode").lazy_load()
 
 lspkind.init({})
 
-vim.keymap.set(
-    "n",
-    "<leader>k",
-    ":LspOverloadsSignature<CR>",
-    { desc = "Toggle Method Signature Overloads", silent = true }
-)
-vim.keymap.set(
-    "i",
-    "<leader>k",
-    "<CMD>:LspOverloadsSignature<CR>",
-    { desc = "Toggle Method Signature Overloads", silent = true }
-)
+-- vim.keymap.set(
+--     "n",
+--     "<leader>k",
+--     ":LspOverloadsSignature<CR>",
+--     { desc = "Toggle Method Signature Overloads", silent = true }
+-- )
+-- vim.keymap.set(
+--     "i",
+--     "<leader>k",
+--     "<CMD>:LspOverloadsSignature<CR>",
+--     { desc = "Toggle Method Signature Overloads", silent = true }
+-- )
 
 vim.keymap.set({ "n" }, "<leader>ls", function()
     require("lsp_signature").toggle_float_win()
