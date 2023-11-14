@@ -14,7 +14,7 @@ require("bufferline").setup({
 })
 
 local map = vim.keymap.set
-
+map("n", "<leader>bq", "<cmd> bd <CR>", { desc = "Close buffer" })
 map("n", "<leader>bb", ":BufferLinePick <CR>", { desc = "Pick Buffer" })
 map("n", "<Tab>", ":BufferLineCycleNext <CR>", { desc = "Next Buffer", silent = true })
 map("n", "<S-Tab>", ":BufferLineCyclePrev <CR>", { desc = "Previous Buffer", silent = true })

@@ -242,7 +242,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
             mapping = {
                 ["<C-y>"] = cmp.config.disable,
                 -- ["<C-e>"] = cmp.config.disable,
-                ["Tab"] = cmp.mapping(function(fallback)
+                ["<Tab>"] = cmp.mapping(function(fallback)
                     if cmp.visible() then
                         cmp.select_next_item()
                         -- elseif vim.fn["vsnip#available"](1) then
@@ -270,18 +270,18 @@ vim.api.nvim_create_autocmd("LspAttach", {
                     i = cmp.mapping.abort(),
                     c = cmp.mapping.close(),
                 }),
-                ["<CR>"] = cmp.mapping.confirm({ select = true }),
+                ["<CR>"] = cmp.mapping.confirm({
+                    behavior = cmp.ConfirmBehavior.Replace,
+                    select = true,
+                }),
                 -- check if the below <c-l> is needed. It was added as a test
             },
             sources = cmp.config.sources({
                 { name = "nvim_lsp" },
                 { name = "luasnip" }, -- snippets
                 { name = "vsnip" },
-                { name = "ultisnips" },
-                { name = "buffer" }, -- text within current buffer
-                { name = "path" },   -- file system paths
-            }),
-            snippet = {              -- configure how nvim-cmp interacts with snippet engine
+            }, { { name = "buffer" }, { name = "path" } }),
+            snippet = { -- configure how nvim-cmp interacts with snippet engine
                 expand = function(args)
                     luasnip.lsp_expand(args.body)
                     -- vim.fn["vsnip#anonymous"](args.body)

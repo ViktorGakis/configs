@@ -7,7 +7,7 @@ return {
     "hrsh7th/vim-vsnip",    -- useful snippets
     "hrsh7th/cmp-nvim-lsp-document-symbol",
     "onsails/lspkind.nvim", -- vs-code like pictograms
-    "quangnguyen30192/cmp-nvim-ultisnips",
+    -- "quangnguyen30192/cmp-nvim-ultisnips",
     "onsails/lspkind.nvim",
     event = "InsertEnter",
     dependencies = {},
