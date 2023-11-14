@@ -9,7 +9,8 @@ g.maplocalleader = " "
 opt.expandtab = true -- expand tab to spaces
 -- copy indent from current line when starting new one
 -- opt.autoindent = true
-
+opt.softtabstop = 4 -- Number of spaces inserted instead of a TAB character
+opt.shiftwidth = 4  -- Number of spaces inserted when indenting
 -- line wrapping
 opt.wrap = true
 opt.breakindent = true

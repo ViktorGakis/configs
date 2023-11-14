@@ -54,6 +54,24 @@ end
 -- used to enable autocompletion (assign to every lsp server config)
 local capabilities = cmp_nvim_lsp.default_capabilities()
 
+-- capabilities.textDocument.completion.completionItem = {
+--     documentationFormat = { "markdown", "plaintext" },
+--     snippetSupport = true,
+--     preselectSupport = true,
+--     insertReplaceSupport = true,
+--     labelDetailsSupport = true,
+--     deprecatedSupport = true,
+--     commitCharactersSupport = true,
+--     tagSupport = { valueSet = { 1 } },
+--     resolveSupport = {
+--         properties = {
+--             "documentation",
+--             "detail",
+--             "additionalTextEdits",
+--         },
+--     },
+-- }
+
 -- Change the Diagnostic symbols in the sign column (gutter)
 -- (not in youtube nvim video)
 local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
@@ -108,7 +126,7 @@ lspconfig["cssls"].setup({
     on_attach = on_attach,
 })
 
-lspconfig["cssls"].setup({
+lspconfig["bashls"].setup({
     capabilities = capabilities,
     on_attach = on_attach,
 })
@@ -124,8 +142,7 @@ lspconfig["marksman"].setup({
     filetypes = { "markdown", "text" },
 })
 
-lspconfig.eslint.setup({
-    -- ...
+lspconfig["eslint"].setup({
     capabilities = capabilities,
     on_attach = function(client, bufnr)
         -- Call the pre-existing `on_attach` function if it exists
@@ -188,7 +205,6 @@ lspconfig["pyright"].setup({
                 extraPaths = { "./" },
                 typeshedPaths = { "./" },
                 diagnosticMode = "openFilesOnly",
-                useLibraryCodeForTypes = true,
                 typeCheckingMode = "off",
                 reportMissingTypeStubs = false,
                 portOptionalSubscript = "error",
@@ -215,15 +231,15 @@ lspconfig["ruff_lsp"].setup({
     on_attach = on_attach,
 })
 
-vim.api.nvim_create_autocmd("FileType", {
-    pattern = "sh",
-    callback = function()
-        vim.lsp.start({
-            name = "bash-language-server",
-            cmd = { "bash-language-server", "start" },
-        })
-    end,
-})
+-- vim.api.nvim_create_autocmd("FileType", {
+--     pattern = "sh",
+--     callback = function()
+--         vim.lsp.start({
+--             name = "bash-language-server",
+--             cmd = { "bash-language-server", "start" },
+--         })
+--     end,
+-- })
 --
 --
 -- lspconfig["csharp-language-server"].setup({

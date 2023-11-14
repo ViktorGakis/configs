@@ -3,7 +3,6 @@ local cmp = require("cmp")
 local zero = require("lsp-zero")
 -- local lsp = zero.preset({})
 local lsp = zero.preset("recommended")
-local lspkind = require("lspkind")
 local lspconfig = require("lspconfig")
 -- import nvim-autopairs completion functionality
 
@@ -19,9 +18,7 @@ local schemas = require("schemastore")
 -- }
 --
 -- loads vscode style snippets from installed plugins (e.g. friendly-snippets)
-require("luasnip.loaders.from_vscode").lazy_load()
-
-lspkind.init({})
+-- require("luasnip.loaders.from_vscode").lazy_load()
 
 -- vim.keymap.set(
 --     "n",
@@ -108,7 +105,7 @@ lspconfig.jsonls.setup({
 })
 
 lspconfig.yamlls.setup({
-    settins = {
+    settings = {
         yamlls = {
             schemas = schemas.yaml.schemas(),
         },
@@ -134,6 +131,54 @@ lsp.setup()
 
 vim.api.nvim_create_autocmd("LspAttach", {
     callback = function(ev)
+        local client = vim.lsp.get_client_by_id(ev.data.client_id)
+        local function toSnakeCase(str)
+            return string.gsub(str, "%s*[- ]%s*", "_")
+        end
+    end,
+})
+
+-- vscode completion colours
+-- gray
+vim.api.nvim_set_hl(0, "CmpItemAbbrDeprecated", { bg = "NONE", strikethrough = true, fg = "#808080" })
+-- blue
+vim.api.nvim_set_hl(0, "CmpItemAbbrMatch", { bg = "NONE", fg = "#569CD6" })
+vim.api.nvim_set_hl(0, "CmpItemAbbrMatchFuzzy", { link = "CmpIntemAbbrMatch" })
+-- light blue
+vim.api.nvim_set_hl(0, "CmpItemKindVariable", { bg = "NONE", fg = "#9CDCFE" })
+vim.api.nvim_set_hl(0, "CmpItemKindInterface", { link = "CmpItemKindVariable" })
+vim.api.nvim_set_hl(0, "CmpItemKindText", { link = "CmpItemKindVariable" })
+-- pink
+vim.api.nvim_set_hl(0, "CmpItemKindFunction", { bg = "NONE", fg = "#C586C0" })
+vim.api.nvim_set_hl(0, "CmpItemKindMethod", { link = "CmpItemKindFunction" })
+-- front
+vim.api.nvim_set_hl(0, "CmpItemKindKeyword", { bg = "NONE", fg = "#D4D4D4" })
+vim.api.nvim_set_hl(0, "CmpItemKindProperty", { link = "CmpItemKindKeyword" })
+vim.api.nvim_set_hl(0, "CmpItemKindUnit", { link = "CmpItemKindKeyword" })
+
+local lsp = require("lsp-zero").preset({
+    manage_nvim_cmp = {
+        set_extra_mappings = true,
+    },
+})
+
+lsp.on_attach(function(client, bufnr)
+    lsp.default_keymaps({ buffer = bufnr })
+end)
+
+lsp.setup()
+
+vim.api.nvim_create_autocmd("LspAttach", {
+    callback = function(ev)
+        local cmp = require("cmp")
+        local cmp_select_opts = { behavior = cmp.SelectBehavior.Select }
+        local cmp_action = require("lsp-zero").cmp_action()
+
+        local lspkind = require("lspkind")
+        lspkind.init({})
+
+        require("luasnip.loaders.from_vscode").lazy_load()
+        require("luasnip.loaders.from_snipmate").lazy_load()
         require("lsp_lines").setup()
 
         local cmp_autopairs = require("nvim-autopairs.completion.cmp")
@@ -143,93 +188,15 @@ vim.api.nvim_create_autocmd("LspAttach", {
             enable_autosnippets = true,
             history = true,
         })
-        luasnip.config.setup({
-            enable_autosnippets = true,
-            history = true,
-        })
 
-        function create_namespace_from_path(path)
-            return "namespace " .. path:gsub("[a-zA-Z]:[\\/]", ""):gsub("[\\/]", ".") .. ";"
-        end
-
-        function get_namespace()
-            local fname = vim.api.nvim_buf_get_name(0)
-            print("fname: " .. fname)
-            local util = require("lspconfig.util")
-            local path = util.root_pattern("*.csproj")(fname)
-                or util.root_pattern("*.sln")(fname)
-                or util.root_pattern("*.sln")("./")
-                or util.root_pattern("*.csproj")("./")
-                or util.root_pattern("*.slnx")
-            print("path: ", path)
-
-            if path == nil then
-                path = ""
-            end
-
-            local result = fname:gsub(path .. "/", ""):gsub(path .. "\\", "")
-            print("temp-result: " .. result)
-            local no_fname = result:gsub("[\\/]?[a-zA-Z0-9_@]+.cs$", "")
-
-            print("no_fname: " .. no_fname)
-
-            local namespace = create_namespace_from_path(no_fname)
-            return namespace
-        end
-
-        local function get_class_name()
-            local start_index, end_index, file_name = string.find(vim.api.nvim_buf_get_name(0), "([a-zA-Z_@<>0-9]+).cs")
-            local name = file_name:gsub(".cs", ""):gsub("/", ""):gsub("\\", "")
-
-            return name
-        end
-
-        local function get_class_with_namespace()
-            local class_name = get_class_name()
-            local namespace_name = get_namespace()
-            local type = "class"
-
-            if class_name:sub(1, 1) == "I" then
-                type = "interface"
-            end
-
-            return {
-                namespace_name,
-                [[]],
-                "public " .. type .. " " .. class_name,
-                [[{]],
-                [[]],
-                "}",
-            }
-        end
-
-        luasnip.add_snippets(nil, {
-            cs = {
-                luasnip.snippet({
-                    trig = "namespace",
-                    name = "add namesapce",
-                    dscr = "Add namespace",
-                }, {
-                    luasnip.function_node(get_namespace, {}),
-                }),
-                luasnip.snippet({
-                    trig = "class",
-                    name = "class with namesapce",
-                    dscr = "class with namesapce",
-                }, {
-                    luasnip.function_node(get_class_with_namespace, {}),
-                }),
-            },
-        })
-
-        luasnip.setup()
+        -- require("luasnip.loaders.from_vscode").lazy_load()
 
         require("luasnip.loaders.from_vscode").lazy_load()
-
         local cmp_action = zero.cmp_action()
+
         -- make autopairs and completion work together
-        --
-        cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
+        cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done({ map_char = { tex = "" } }))
+
         cmp.setup({
             completion = {
                 completeopt = "menu,menuone,preview,noselect",
@@ -241,46 +208,50 @@ vim.api.nvim_create_autocmd("LspAttach", {
             },
             mapping = {
                 ["<C-y>"] = cmp.config.disable,
-                -- ["<C-e>"] = cmp.config.disable,
-                ["<Tab>"] = cmp.mapping(function(fallback)
-                    if cmp.visible() then
-                        cmp.select_next_item()
-                        -- elseif vim.fn["vsnip#available"](1) then
-                        --     vim.fn.feedkeys(t("<Plug>(vsnip-expand-or-jump)", ""))
-                    else
-                        fallback()
-                    end
-                end, {
-                    "i",
-                    "s",
-                }),
-                ["<S-Tab>"] = cmp.mapping(function(fallback)
-                    if cmp.visible() then
-                        cmp.select_prev_item()
-                        -- elseif vim.fn["vsnip#available"](1) then
-                        --     vim.fn.feedkeys(t("<Plug>(vsnip-expand-or-jump)", ""))
-                    else
-                        fallback()
-                    end
-                end, {
-                    "i",
-                    "s",
-                }),
                 ["<C-e>"] = cmp.mapping({
                     i = cmp.mapping.abort(),
                     c = cmp.mapping.close(),
                 }),
                 ["<CR>"] = cmp.mapping.confirm({
-                    behavior = cmp.ConfirmBehavior.Replace,
+                    -- behavior = cmp.ConfirmBehavior.Replace,
                     select = true,
                 }),
-                -- check if the below <c-l> is needed. It was added as a test
+                ["<C-Space>"] = cmp.mapping.complete(),
+                ["<Tab>"] = cmp_action.luasnip_supertab(),
+                ["<S-Tab>"] = cmp_action.luasnip_shift_supertab(),
+                ["<C-u>"] = cmp.mapping.scroll_docs(-4),
+                ["<C-d>"] = cmp.mapping.scroll_docs(4),
+                -- ["<C-f>"] = cmp_action.luasnip_jump_forward(),
+                -- ["<C-b>"] = cmp_action.luasnip_jump_backward(),
+                -- ["<C-y>"] = cmp.mapping.confirm({ select = true }),
+                -- ["<C-e>"] = cmp.mapping.abort(),
+
+                -- ["<Up>"] = cmp.mapping.select_prev_item(cmp_select_opts),
+                -- ["<Down>"] = cmp.mapping.select_next_item(cmp_select_opts),
+                -- ["<C-p>"] = cmp.mapping(function()
+                --     if cmp.visible() then
+                --         cmp.select_prev_item(cmp_select_opts)
+                --     else
+                --         cmp.complete()
+                --     end
+                -- end),
+                -- ["<C-n>"] = cmp.mapping(function()
+                --     if cmp.visible() then
+                --         cmp.select_next_item(cmp_select_opts)
+                --     else
+                --         cmp.complete()
+                --     end
+                -- end),
             },
             sources = cmp.config.sources({
                 { name = "nvim_lsp" },
-                { name = "luasnip" }, -- snippets
+                { name = "luasnip",   option = { show_autosnippets = true } },
+                { name = "treesitter" },
                 { name = "vsnip" },
-            }, { { name = "buffer" }, { name = "path" } }),
+                { name = "buffer" },
+                { name = "path" },
+                { name = "spell" },
+            }, {}),
             snippet = { -- configure how nvim-cmp interacts with snippet engine
                 expand = function(args)
                     luasnip.lsp_expand(args.body)
@@ -319,30 +290,3 @@ vim.api.nvim_create_autocmd("LspAttach", {
         })
     end,
 })
-
-vim.api.nvim_create_autocmd("LspAttach", {
-    callback = function(ev)
-        local client = vim.lsp.get_client_by_id(ev.data.client_id)
-        local function toSnakeCase(str)
-            return string.gsub(str, "%s*[- ]%s*", "_")
-        end
-    end,
-})
-
--- vscode completion colours
--- gray
-vim.api.nvim_set_hl(0, "CmpItemAbbrDeprecated", { bg = "NONE", strikethrough = true, fg = "#808080" })
--- blue
-vim.api.nvim_set_hl(0, "CmpItemAbbrMatch", { bg = "NONE", fg = "#569CD6" })
-vim.api.nvim_set_hl(0, "CmpItemAbbrMatchFuzzy", { link = "CmpIntemAbbrMatch" })
--- light blue
-vim.api.nvim_set_hl(0, "CmpItemKindVariable", { bg = "NONE", fg = "#9CDCFE" })
-vim.api.nvim_set_hl(0, "CmpItemKindInterface", { link = "CmpItemKindVariable" })
-vim.api.nvim_set_hl(0, "CmpItemKindText", { link = "CmpItemKindVariable" })
--- pink
-vim.api.nvim_set_hl(0, "CmpItemKindFunction", { bg = "NONE", fg = "#C586C0" })
-vim.api.nvim_set_hl(0, "CmpItemKindMethod", { link = "CmpItemKindFunction" })
--- front
-vim.api.nvim_set_hl(0, "CmpItemKindKeyword", { bg = "NONE", fg = "#D4D4D4" })
-vim.api.nvim_set_hl(0, "CmpItemKindProperty", { link = "CmpItemKindKeyword" })
-vim.api.nvim_set_hl(0, "CmpItemKindUnit", { link = "CmpItemKindKeyword" })
