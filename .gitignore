@@ -45,3 +45,4 @@ plugin/packer_compiled.lua
 
 
 .gitignore
+tmux/plugins/
