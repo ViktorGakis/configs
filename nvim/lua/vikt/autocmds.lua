@@ -75,6 +75,20 @@ vim.api.nvim_create_autocmd("FileType", {
     end,
 })
 
+-- vim.api.nvim_create_autocmd("FileType", {
+--     group = vim.api.nvim_create_augroup("wrap_spell", { clear = true }),
+--     pattern = { "gitcommit", "markdown" },
+--     callback = function()
+--         vim.opt_local.textwidth = 80
+--         vim.opt_local.wrap = true
+--         vim.opt_local.spell = true
+--         vim.opt_local.tabstop = 4
+--         vim.opt_local.softtabstop = 4
+--         vim.opt_local.shiftwidth = 4
+--         vim.opt_local.expandtab = true
+--     end,
+-- })
+
 -- Auto create dir when saving a file, in case some intermediate directory does not exist
 vim.api.nvim_create_autocmd({ "BufWritePre" }, {
     group = augroup("auto_create_dir"),
@@ -87,26 +101,11 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
     end,
 })
 
-vim.api.nvim_create_autocmd("ColorScheme", {
-    -- https://neovim.io/doc/user/api.html
-    pattern = "*",
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "markdown",
     callback = function()
-        vim.api.nvim_set_hl(0, "@keyword.function", { fg = "#c300ff", bold = true, italic = true })
-        vim.api.nvim_set_hl(0, "PreProc", { fg = "#c300ff", bold = true, italic = true })
-        vim.api.nvim_set_hl(0, "@keyword", { fg = "#c300ff", bold = true, italic = true })
-        vim.api.nvim_set_hl(0, "@operator", { fg = "#d4136d", bold = true })
-        vim.api.nvim_set_hl(0, "Statement", { fg = "#d4136d", bold = true })
-        vim.api.nvim_set_hl(0, "Function", { fg = "#1500ff", bold = true })
-        vim.api.nvim_set_hl(0, "@function", { fg = "#1500ff", bold = true })
-        vim.api.nvim_set_hl(0, "Special", { fg = "#1500ff" })
-        vim.api.nvim_set_hl(0, "@Constructor", { fg = "#117bac" })
-        vim.api.nvim_set_hl(0, "@String", { fg = "#76aa68" })
-        vim.api.nvim_set_hl(0, "@variable", { fg = "#a84aff" })
-        vim.api.nvim_set_hl(0, "@parameter", { fg = "#a84aff" })
-        vim.api.nvim_set_hl(0, "@field", { fg = "#5560ff" })
-        vim.api.nvim_set_hl(0, "@property", { fg = "#5560ff" })
-        vim.api.nvim_set_hl(0, "@variable.builtin", { fg = "#117bac" })
-        vim.api.nvim_set_hl(0, "Constant", { fg = "#117bac" })
-        vim.api.nvim_set_hl(0, "@Type", { fg = "#00b7ff" })
+        vim.opt.shiftwidth = 8
+        vim.opt.tabstop = 8
+        vim.opt.softtabstop = 8
     end,
 })

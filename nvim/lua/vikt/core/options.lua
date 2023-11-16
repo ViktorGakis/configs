@@ -10,7 +10,7 @@ opt.expandtab = true -- expand tab to spaces
 -- copy indent from current line when starting new one
 -- opt.autoindent = true
 opt.softtabstop = 4 -- Number of spaces inserted instead of a TAB character
-opt.shiftwidth = 4  -- Number of spaces inserted when indenting
+opt.shiftwidth = 4 -- Number of spaces inserted when indenting
 -- line wrapping
 opt.wrap = true
 opt.breakindent = true
@@ -20,7 +20,7 @@ opt.textwidth = 999999999
 opt.showbreak = "  "
 -- search settings
 opt.ignorecase = true -- ignore case when searching
-opt.smartcase = true  -- if you include mixed case in your search, assumes you want case-sensitive
+opt.smartcase = true -- if you include mixed case in your search, assumes you want case-sensitive
 
 -- cursor line
 opt.cursorline = true -- highlight the current cursor line
@@ -63,7 +63,7 @@ o.shiftwidth = 4
 o.smartindent = true
 o.mouse = "a"
 o.ignorecase = true
-o.smartcase = truelseif
+o.smartcase = true
 o.colorcolumn = ""
 o.syntax = "enable"
 o.termguicolors = true

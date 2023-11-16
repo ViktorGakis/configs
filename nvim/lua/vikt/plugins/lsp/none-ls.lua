@@ -47,6 +47,7 @@ return {
                 code_actions.marksman,
                 formatting.prettier.with({
                     extra_filetypes = { "svelte" },
+                    extra_args = { "--tab-width", "4" },
                 }), -- js/ts formatter
                 formatting.stylua, -- lua formatter
                 formatting.isort,
@@ -61,6 +62,9 @@ return {
                 diagnostics.marksman,
                 diagnostics.pylint.with({
                     extra_args = { "--disable", "C0114,c0115,c0116,c0301,w1203,w0703" },
+                    env = function(params)
+                        return { PYTHONPATH = params.root }
+                    end,
                 }),
                 diagnostics.codespell.with({ filetypes = { "python" } }),
                 diagnostics.mypy,

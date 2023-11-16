@@ -26,7 +26,7 @@ return {
             --     "<cmd>e ~/.config/nvim/after/plugin/treesitter.lua <CR>"
             -- ),
             dashboard.button("<leader>ec", "  > NVIM", "<cmd>e ~/.config/nvim/ <CR>"),
-            dashboard.button("<M-1>", "  > TMUX", "<cmd>e ~/.tmux.conf <CR>"),
+            dashboard.button("<M-1>", "  > TMUX", "<cmd>e ~/.config/tmux/tmux.conf <CR>"),
             -- dashboard.button("e", "  > New File", "<cmd>ene<CR>"),
             dashboard.button("<C-n>", "  > Toggle file explorer", "<cmd>NvimTreeToggle<CR>"),
             -- dashboard.button("<leader>ff>", "󰱼 > Find File", "<cmd>Telescope find_files<CR>"),

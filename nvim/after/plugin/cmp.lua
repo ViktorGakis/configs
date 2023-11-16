@@ -192,6 +192,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
         -- require("luasnip.loaders.from_vscode").lazy_load()
 
         require("luasnip.loaders.from_vscode").lazy_load()
+        require("luasnip.loaders.from_snipmate").lazy_load()
+
         local cmp_action = zero.cmp_action()
 
         -- make autopairs and completion work together
@@ -216,7 +218,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
                     -- behavior = cmp.ConfirmBehavior.Replace,
                     select = true,
                 }),
-                ["<C-Space>"] = cmp.mapping.complete(),
+                -- ["<C-Space>"] = cmp.mapping.complete(),
                 ["<Tab>"] = cmp_action.luasnip_supertab(),
                 ["<S-Tab>"] = cmp_action.luasnip_shift_supertab(),
                 ["<C-u>"] = cmp.mapping.scroll_docs(-4),
@@ -245,7 +247,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
             },
             sources = cmp.config.sources({
                 { name = "nvim_lsp" },
-                { name = "luasnip",   option = { show_autosnippets = true } },
+                { name = "luasnip", option = { show_autosnippets = true } },
                 { name = "treesitter" },
                 { name = "vsnip" },
                 { name = "buffer" },
@@ -258,6 +260,18 @@ vim.api.nvim_create_autocmd("LspAttach", {
                     -- vim.fn["vsnip#anonymous"](args.body)
                 end,
             },
+            confirm_opts = {
+                behavior = cmp.ConfirmBehavior.Replace,
+                select = false,
+            },
+            -- Set configuration for git
+            cmp.setup.filetype("gitcommit", {
+                sources = cmp.config.sources({
+                    { name = "cmp_git" }, -- You can specify the `cmp_git` source if you were installed it.
+                }, {
+                    { name = "buffer" },
+                }),
+            }),
             -- https://github.com/hrsh7th/nvim-cmp/wiki/Menu-Appearance
             formatting = {
                 fields = { "abbr", "kind", "menu" },
