@@ -233,18 +233,18 @@ lspconfig["pyright"].setup({
             --     return util.root_pattern(unpack(root_files))(fname)
             -- end,
         },
-        commands = {
-            PyrightOrganizeImports = {
-                -- organize_imports,
-                description = "Organize Imports",
-            },
-            PyrightSetPythonPath = {
-                -- set_python_path,
-                description = "Reconfigure pyright with the provided python path",
-                nargs = 1,
-                complete = "file",
-            },
-        },
+        -- commands = {
+        --     PyrightOrganizeImports = {
+        --         -- organize_imports,
+        --         description = "Organize Imports",
+        --     },
+        --     PyrightSetPythonPath = {
+        --         -- set_python_path,
+        --         description = "Reconfigure pyright with the provided python path",
+        --         nargs = 1,
+        --         complete = "file",
+        --     },
+        -- },
 
         python = {
             analysis = {

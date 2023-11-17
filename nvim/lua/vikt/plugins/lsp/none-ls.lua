@@ -47,7 +47,6 @@ return {
                 code_actions.marksman,
                 formatting.prettier.with({
                     extra_filetypes = { "svelte" },
-                    extra_args = { "--tab-width", "4" },
                 }), -- js/ts formatter
                 formatting.stylua, -- lua formatter
                 formatting.isort,

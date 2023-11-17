@@ -78,5 +78,3 @@ end
 --
 -- vim.keymap.set({ "n", "v" }, "<leader>mp", formatter, { desc = "Format file or range (in visual mode)" })
 --
-vim.keymap.set("n", "<C-s>", saveFormat_N, { desc = "Format and Save" })
-vim.keymap.set("i", "<C-s>", saveFormat_I, { desc = "Format and Save" })

@@ -6,12 +6,16 @@ g.mapleader = " "
 g.maplocalleader = " "
 ---------------------
 ---- Generic Utils
+---
+map("n", "<C-s>", "<cmd>w<CR>", { desc = "Format and Save" })
+map("i", "<C-s>", "<cmd>w<CR><ESC>", { desc = "Format and Save" })
+
 map("n", "<leader>q", "<cmd>q!<CR>", { desc = "Force Quit" })
 map("n", "<leader>Q", "<cmd>qa!<CR>", { desc = "Nukeclear Quit" })
 map("n", "<C-d>", "<C-d>zz", { desc = "<C-d> with centering in the end" })
 map("n", "<C-u>", "<C-u>zz", { desc = "<C-u> with centering in the end" })
-map("n", "<leader>o", "o<ESC>")
-map("n", "<leader>O", "O<ESC>")
+map({ "i", "n" }, "<C-o>", "<ESC>o", { noremap = true })
+map({ "i", "n" }, "<C-O>", "<ESC>O", { noremap = true })
 map("n", "<C-c>", "<cmd> %y+ <CR>", { desc = "Copy whole file" })
 map("n", "<C-z>", "<nop>")
 map(
@@ -37,8 +41,8 @@ map("n", "<leader>ec", "<cmd>e ~/.config/nvim/ <CR>", { desc = "   Configurat
 
 map("i", "jk", "<ESC>", { desc = "Exit insert mode with jk" })
 
-map("i", "<C-d>", "<End>", { desc = "End of line" })
-map("i", "<C-b>", "<ESC>^i", { desc = "Beginning of line" })
+map("i", "<C-b>", "<End>", { desc = "End of line" })
+map("i", "<C-d>", "<ESC>^i", { desc = "Beginning of line" })
 
 map("i", "<C-h>", "<Left>", { desc = "Move left" })
 map("i", "<C-l>", "<Right>", { desc = "Move right" })
