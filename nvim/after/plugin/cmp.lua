@@ -260,10 +260,10 @@ vim.api.nvim_create_autocmd("LspAttach", {
                     -- vim.fn["vsnip#anonymous"](args.body)
                 end,
             },
-            confirm_opts = {
-                behavior = cmp.ConfirmBehavior.Replace,
-                select = false,
-            },
+            -- confirm_opts = {
+            --     behavior = cmp.ConfirmBehavior.Replace,
+            --     select = false,
+            -- },
             -- Set configuration for git
             cmp.setup.filetype("gitcommit", {
                 sources = cmp.config.sources({

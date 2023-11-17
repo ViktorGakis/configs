@@ -41,7 +41,7 @@ local function feedEscapeKey()
 end
 
 local function formattingActions()
-    vim.cmd("normal! ma")
+    -- vim.cmd("normal! ma")
     vim.cmd("normal! kh")
     feedEscapeKey()
     formatter()
@@ -55,7 +55,7 @@ local function saveFormat_N()
     vim.cmd("w")
 
     -- Jump to mark
-    vim.cmd("normal! `a")
+    -- vim.cmd("normal! `a")
     -- Optionally, you can return the success status and error message
     return success, errorMessage
 end
@@ -68,7 +68,7 @@ local function saveFormat_I()
     vim.cmd("w")
 
     -- Jump to mark
-    vim.cmd("normal! `a")
+    -- vim.cmd("normal! `a")
     -- Optionally, you can return the success status and error message
     return success, errorMessage
 end
