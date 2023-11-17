@@ -218,7 +218,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
                     -- behavior = cmp.ConfirmBehavior.Replace,
                     select = true,
                 }),
-                -- ["<C-Space>"] = cmp.mapping.complete(),
+                ["<C-Space>"] = cmp.mapping.complete(),
                 ["<Tab>"] = cmp_action.luasnip_supertab(),
                 ["<S-Tab>"] = cmp_action.luasnip_shift_supertab(),
                 ["<C-u>"] = cmp.mapping.scroll_docs(-4),

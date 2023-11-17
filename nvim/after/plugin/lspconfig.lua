@@ -187,6 +187,39 @@ lspconfig["eslint"].setup({
 --     },
 --     capabilities = capabilities,
 -- })
+--
+local util = require("lspconfig.util")
+
+local root_files = {
+    "pyproject.toml",
+    "setup.py",
+    "setup.cfg",
+    "requirements.txt",
+    "Pipfile",
+    "pyrightconfig.json",
+    ".git",
+}
+
+local function organize_imports()
+    local params = {
+        command = "pyright.organizeimports",
+        arguments = { vim.uri_from_bufnr(0) },
+    }
+    vim.lsp.buf.execute_command(params)
+end
+
+local function set_python_path(path)
+    local clients = vim.lsp.get_clients({
+        bufnr = vim.api.nvim_get_current_buf(),
+        name = "pyright",
+    })
+    for _, client in ipairs(clients) do
+        client.config.settings =
+            vim.tbl_deep_extend("force", client.config.settings, { python = { pythonPath = path } })
+        client.notify("workspace/didChangeConfiguration", { settings = nil })
+    end
+end
+
 -- configure python server
 -- https://github.com/microsoft/pyright/blob/main/docs/settings.md
 -- https://github.com/microsoft/pyright/blob/main/docs/configuration.md#type-check-diagnostics-settings
@@ -196,14 +229,32 @@ lspconfig["pyright"].setup({
     settings = {
         pyright = {
             autoImportCompletion = true,
+            -- root_dir = function(fname)
+            --     return util.root_pattern(unpack(root_files))(fname)
+            -- end,
         },
+        commands = {
+            PyrightOrganizeImports = {
+                -- organize_imports,
+                description = "Organize Imports",
+            },
+            PyrightSetPythonPath = {
+                -- set_python_path,
+                description = "Reconfigure pyright with the provided python path",
+                nargs = 1,
+                complete = "file",
+            },
+        },
+
         python = {
             analysis = {
+
                 include = { "src/**/*.py" },
                 exclude = { "**/node_modules/**", "**/__pycache__/**" },
                 autoSearchPaths = true,
-                extraPaths = { "./" },
-                typeshedPaths = { "./" },
+                pythonPath = { "venv/bin/python", ".venv/bin/python" },
+                extraPaths = { "./", "../" },
+                typeshedPaths = { "./", "../" },
                 diagnosticMode = "openFilesOnly",
                 typeCheckingMode = "off",
                 reportMissingTypeStubs = false,
@@ -213,19 +264,20 @@ lspconfig["pyright"].setup({
                 useLibraryCodeForTypes = true,
                 reportUndefinedVariable = false,
             },
-            -- diagnostics = {
-            --     extra_args = { "--disable", "c0114,c0115,c0116,c0301,w1203,w0703" },
-            --     textDocument = {
-            --         publishDiagnostics = {
-            --             tagSupport = {
-            --                 valueSet = { 2 },
-            --             },
-            --         },
-            --     },
-            -- },
+            diagnostics = {
+                extra_args = { "--disable", "c0114,c0115,c0116,c0301,w1203,w0703" },
+                textDocument = {
+                    publishDiagnostics = {
+                        tagSupport = {
+                            valueSet = { 2 },
+                        },
+                    },
+                },
+            },
         },
     },
 })
+
 lspconfig["ruff_lsp"].setup({
     capabilities = capabilities,
     on_attach = on_attach,
@@ -259,5 +311,4 @@ lspconfig["ruff_lsp"].setup({
 --     organize_imports_on_format = true,
 --     filetypes = { "cs", "vb", "csproj", "sln", "slnx", "props" },
 -- })
---
 --
