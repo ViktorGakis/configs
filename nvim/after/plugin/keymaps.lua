@@ -32,14 +32,18 @@ map("n", "<leader>fo", "<cmd> Telescope options <CR>", { desc = "Find options" }
 map("n", "<leader>fr", "<cmd> Telescope registers <CR>", { desc = "Find registers" })
 map("n", "<leader>fl", "<cmd> Telescope lsp_document_symbols <CR>", { desc = "Find Lsp Symbols" })
 map("n", "<leader>fm", "<cmd> Telescope marks <CR>", { desc = "Find bookmarks" })
--- git
-map("n", "<leader>gm", "<cmd> Telescope git_commits <CR>", { desc = "Git commits" })
 
+------ git
+map("n", "<leader>gC", "<cmd> Telescope git_commits <CR>", { desc = "Git commits" })
 map("n", "<leader>gt", "<cmd> Telescope git_status <CR>", { desc = "Git status" })
+map("n", "<leader>gc", "<cmd> Telescope git_bcommits <CR>", { desc = "Commit history buffer" })
+map("n", "<leader>gb", "<cmd> Telescope git_branches <CR>", { desc = "Repo Branches" })
+map("n", "<leader>gs", "<cmd> Telescope git_stash <CR>", { desc = "Repo Stash" })
 
 map("n", "<leader>pt", "<cmd> Telescope terms <CR>", { desc = "Pick hidden term" })
+
 ---- Sessions
-map("n", "<leader>wr", "<cmd>SessionRestore<CR>", { desc = "Restore session for cwd" })             -- restore last workspace session for current directory
+map("n", "<leader>wr", "<cmd>SessionRestore<CR>", { desc = "Restore session for cwd" }) -- restore last workspace session for current directory
 map("n", "<leader>ws", "<cmd>SessionSave<CR>", { desc = "Save session for auto session root dir" }) -- save workspace session for current working directory
 --
 -- map("n", "<leader>b", "<cmd> enew <CR>", { desc = "New buffer" })
