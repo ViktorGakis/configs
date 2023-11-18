@@ -1,5 +1,5 @@
 return {
-    "nvim-lua/plenary.nvim",          -- lua functions that many plugins use
+    "nvim-lua/plenary.nvim", -- lua functions that many plugins use
 
     "christoomey/vim-tmux-navigator", -- tmux & split window navigation
     {
@@ -13,13 +13,21 @@ return {
     {
         "NeogitOrg/neogit",
         dependencies = {
-            "nvim-lua/plenary.nvim",         -- required
+            "nvim-lua/plenary.nvim", -- required
             "nvim-telescope/telescope.nvim", -- optional
-            "sindrets/diffview.nvim",        -- optional
-            "ibhagwan/fzf-lua",              -- optional
+            "sindrets/diffview.nvim", -- optional
+            "ibhagwan/fzf-lua", -- optional
         },
         config = true,
     },
+    {
+        "andymass/vim-matchup",
+        setup = function()
+            vim.g.matchup_matchparen_offscreen = { method = "popup" }
+        end,
+    },
+
+    { "HiPhish/rainbow-delimiters.nvim" },
     {
         "lukas-reineke/indent-blankline.nvim",
         main = "ibl",
@@ -71,7 +79,7 @@ return {
         event = { "BufReadPre", "BufNewFile" },
         config = true,
     },
-    { "petertriho/nvim-scrollbar",       lazy = true },
+    { "petertriho/nvim-scrollbar", lazy = true },
     {
         "utilyre/barbecue.nvim",
         name = "barbecue",
@@ -92,13 +100,13 @@ return {
             -- refer to the configuration section below
         },
     },
-    { "folke/neodev.nvim",               opts = {} },
-    { "akinsho/toggleterm.nvim",         version = "*", config = true },
+    { "folke/neodev.nvim", opts = {} },
+    { "akinsho/toggleterm.nvim", version = "*", config = true },
     -- { "phaazon/hop.nvim", branch = "v2", lazy = true },
-    { "smoka7/hop.nvim",                 version = "*" },
+    { "smoka7/hop.nvim", version = "*" },
     { "eandrju/cellular-automaton.nvim", lazy = false },
-    { "rcarriga/nvim-notify",            lazy = true },
-    { "kevinhwang91/nvim-hlslens",       lazy = true },
+    { "rcarriga/nvim-notify", lazy = true },
+    { "kevinhwang91/nvim-hlslens", lazy = true },
     {
         "aznhe21/actions-preview.nvim",
         config = function() end,
@@ -123,9 +131,9 @@ return {
         },
     },
     -- ufo, for code folding
-    { "kevinhwang91/nvim-ufo",       dependencies = "kevinhwang91/promise-async" },
+    { "kevinhwang91/nvim-ufo", dependencies = "kevinhwang91/promise-async" },
     { "tzachar/local-highlight.nvim" },
-    { "folke/flash.nvim",            event = "VeryLazy" },
+    { "folke/flash.nvim", event = "VeryLazy" },
     {
         "ThePrimeagen/refactoring.nvim",
         dependencies = {

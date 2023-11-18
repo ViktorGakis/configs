@@ -79,8 +79,8 @@ return {
             -- "#143652"
             -- #443266
             local bg_highlight = "#143652"
-            -- local bg_search = "#0A64AC"
-            -- local bg_visual = "#275378"
+            local bg_search = "#0A64AC"
+            local bg_visual = "#275378"
             -- local fg = "#CBE0F0"
             -- local fg_dark = "#B4D0E9"
             -- local fg_gutter = "#627E97"
@@ -89,15 +89,16 @@ return {
             require("tokyonight").setup({
                 style = "night",
                 on_colors = function(colors)
+                    -- colors.hint = b
                     colors.bg = bg
                     colors.bg_dark = bg_dark
                     colors.bg_float = bg_dark
                     colors.bg_highlight = bg_highlight
                     colors.bg_popup = bg_dark
-                    -- colors.bg_search = bg_search
+                    colors.bg_search = bg_search
                     colors.bg_sidebar = bg_dark
                     colors.bg_statusline = bg_dark
-                    -- colors.bg_visual = bg_visual
+                    colors.bg_visual = bg_visual
                     -- colors.border = border
                     -- colors.fg = fg
                     colors.fg_dark = fg_dark

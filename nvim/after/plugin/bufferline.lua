@@ -34,37 +34,37 @@ map(
 map(
     "n",
     "<leader>bse",
-    ":lua require'bufferline'.sort_by('extension')",
+    ":lua require'bufferline'.sort_by('extension') <CR>",
     { desc = "Sort buffers by extension", silent = true, noremap = true }
 )
 map(
     "n",
     "<leader>bsd",
-    ":lua require'bufferline'.sort_by('directory')",
+    ":lua require'bufferline'.sort_by('directory') <CR>",
     { desc = "Sort buffers by directory", silent = true, noremap = true }
 )
 map(
     "n",
     "<leader>bst",
-    ":lua require'bufferline'.sort_by('tabs')",
+    ":lua require'bufferline'.sort_by('tabs') <CR>",
     { desc = "Sort buffers by tabs", silent = true, noremap = true }
 )
 
 map(
     "n",
     "<leader>bcr",
-    ":BufferLineCloseRight",
+    ":BufferLineCloseRight <CR>",
     { desc = "Close all visible buffers to the right", silent = true, noremap = true }
 )
 map(
     "n",
     "<leader>bcl",
-    ":BufferLineCloseLeft",
+    ":BufferLineCloseLeft <CR>",
     { desc = "Close all visible buffers to the left", silent = true, noremap = true }
 )
 map(
     "n",
     "<leader>bca",
-    ":BufferLineCloseOthers",
+    ":BufferLineCloseOthers <CR>",
     { desc = "Close all visible buffers except current", silent = true, noremap = true }
 )

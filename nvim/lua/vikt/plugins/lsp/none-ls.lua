@@ -45,6 +45,12 @@ return {
                 code_actions.shellcheck,
                 code_actions.cspell,
                 code_actions.marksman,
+                -- code actions
+                code_actions.eslint_d.with({
+                    condition = function(utils)
+                        return utils.root_has_file({ ".eslintrc.js", ".eslintrc.cjs", ".eslintrc.json" })
+                    end,
+                }),
                 formatting.prettier.with({
                     extra_filetypes = { "svelte" },
                 }), -- js/ts formatter
@@ -76,9 +82,10 @@ return {
                         return utils.root_has_file({ ".eslintrc.js", ".eslintrc.cjs", ".eslintrc.json" }) -- only enable if root has .eslintrc.js or .eslintrc.cjs
                     end,
                 }),
-                diagnostics.eslint_d.with({ -- js/ts linter
+                -- diagnostics
+                diagnostics.eslint_d.with({
                     condition = function(utils)
-                        return utils.root_has_file({ ".eslintrc.js", ".eslintrc.cjs", ".eslintrc.json" }) -- only enable if root has .eslintrc.js or .eslintrc.cjs
+                        return utils.root_has_file({ ".eslintrc.js", ".eslintrc.cjs", ".eslintrc.json" })
                     end,
                 }),
             },
