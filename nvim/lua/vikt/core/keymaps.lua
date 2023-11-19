@@ -41,8 +41,8 @@ map("n", "<leader>ec", "<cmd>e ~/.config/nvim/ <CR>", { desc = "   Configurat
 
 map("i", "jk", "<ESC>", { desc = "Exit insert mode with jk" })
 
-map("i", "<C-b>", "<End>", { desc = "End of line" })
-map("i", "<C-d>", "<ESC>^i", { desc = "Beginning of line" })
+map("i", "<C-d>", "<End>", { desc = "End of line" })
+map("i", "<C-b>", "<ESC>^i", { desc = "Beginning of line" })
 
 map("i", "<C-h>", "<Left>", { desc = "Move left" })
 map("i", "<C-l>", "<Right>", { desc = "Move right" })
