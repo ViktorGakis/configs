@@ -53,6 +53,9 @@ setup_tmux() {
     # and write it to the destination file
     sed "s/$TERM_PLACEHOLDER/$current_term/g" "$source_file" > "$TMUX_CONF"
 
+    # properly load the tmux settings
+    tmux source-file ~/.config/tmux/tmux.conf
+
     echo "Tmux configuration updated successfully."
 }
 
