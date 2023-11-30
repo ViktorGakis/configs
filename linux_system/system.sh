@@ -40,6 +40,7 @@ install_packages() {
             tmux \
             net-tools\
             traceroute \
+            snapd \
             sudo pkg-config &&
         sudo rm -rf /var/lib/apt/lists/*
 
