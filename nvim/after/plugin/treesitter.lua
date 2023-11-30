@@ -1,6 +1,8 @@
 local hl = vim.api.nvim_set_hl
 
 local function apply_hl()
+    -- hl(0, "MatchParen", { bg = "#e6e6e6", guibg = nil, ctermbg = nil })
+    -- hl(0, "@html.tag", { fg = "#b30000", bold = true, italic = true })
     hl(0, "@keyword.function", { fg = "#c300ff", bold = true, italic = true })
     hl(0, "PreProc", { fg = "#c300ff", bold = true, italic = true })
     -- hl("PreProc", { fg = "#4f49fc", bold = true, italic = true })
@@ -11,7 +13,7 @@ local function apply_hl()
     hl(0, "Statement", { fg = "#b30000", bold = true, italic = true })
     hl(0, "Function", { fg = "#1602f5", bold = true })
     hl(0, "@function", { fg = "#1602f5", bold = true })
-    hl(0, "Special", { fg = "#1602f5" })
+    hl(0, "Special", { fg = "#d9d9d9" })
     hl(0, "@Constructor", { fg = "#a84aff" })
     hl(0, "@String", { fg = "#76aa68" })
     hl(0, "@string.documentation", { fg = "#76aa68" })
@@ -29,7 +31,7 @@ local function apply_hl()
     hl(0, "@Constructor", { fg = "#00b7ff" })
     -- hl("Visual", { fg = "Black", bg = "White", default=true })
     -- hl("Cursorline", { bg = "White", default=true })
-    hl(0, "Cursor", { bg = "Black", fg = "Black" })
+    -- hl(0, "Cursor", { bg = "Black", fg = "Black" })
 end
 
 apply_hl()
@@ -41,3 +43,9 @@ vim.api.nvim_create_autocmd("ColorScheme", {
         apply_hl()
     end,
 })
+
+require("ts_context_commentstring").setup({
+    enable_autocmd = true,
+})
+-- to speed up loading instead.
+vim.g.skip_ts_context_commentstring_module = true

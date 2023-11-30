@@ -10,12 +10,42 @@ g.maplocalleader = " "
 map("n", "<C-s>", "<cmd>w<CR>", { desc = "Format and Save" })
 map("i", "<C-s>", "<cmd>w<CR><ESC>", { desc = "Format and Save" })
 
-map("n", "<leader>q", "<cmd>q!<CR>", { desc = "Force Quit" })
+-- map("n", "<leader>q", "<cmd>q!<CR>", { desc = "Force Quit" })
 map("n", "<leader>Q", "<cmd>qa!<CR>", { desc = "Nukeclear Quit" })
 map("n", "<C-d>", "<C-d>zz", { desc = "<C-d> with centering in the end" })
 map("n", "<C-u>", "<C-u>zz", { desc = "<C-u> with centering in the end" })
-map({ "i", "n" }, "<C-o>", "<ESC>o", { noremap = true })
-map({ "i", "n" }, "<C-O>", "<ESC>O", { noremap = true })
+
+-- Function to open a new line below without auto-indentation
+local function InsertLineBelow()
+    -- Save current position
+    local current_line = vim.api.nvim_win_get_cursor(0)[1]
+    -- Add a new line without indentation
+    vim.api.nvim_buf_set_lines(0, current_line, current_line, false, { "" })
+    -- Move to the new line and enter insert mode
+    vim.api.nvim_win_set_cursor(0, { current_line + 1, 0 })
+    vim.api.nvim_command("startinsert")
+end
+
+-- Function to open a new line above without auto-indentation
+local function InsertLineAbove()
+    -- Save current position
+    local current_line = vim.api.nvim_win_get_cursor(0)[1]
+    -- Add a new line above without indentation
+    vim.api.nvim_buf_set_lines(0, current_line - 1, current_line - 1, false, { "" })
+    -- Move to the new line and enter insert mode
+    vim.api.nvim_win_set_cursor(0, { current_line, 0 })
+    vim.api.nvim_command("startinsert")
+end
+
+map("i", "<C-o>", InsertLineBelow, { noremap = true })
+map("i", "<C-O>", InsertLineAbove, { noremap = true })
+map("n", "<leader>o", InsertLineBelow, { noremap = true })
+map("n", "<leader>O", InsertLineAbove, { noremap = true })
+
+-- map("i", "<C-o>", "<ESC>o", { noremap = true })
+-- map("i", "<C-O>", "<ESC>O", { noremap = true })
+-- map("n", "<leader>o", "o<ESC>", { noremap = true })
+-- map("n", "<leader>O", "O<ESC>", { noremap = true })
 map("n", "<C-c>", "<cmd> %y+ <CR>", { desc = "Copy whole file" })
 map("n", "<C-z>", "<nop>")
 map(

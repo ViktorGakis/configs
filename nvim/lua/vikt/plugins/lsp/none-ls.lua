@@ -52,7 +52,10 @@ return {
                     end,
                 }),
                 formatting.prettier.with({
-                    extra_filetypes = { "svelte" },
+                    -- condition = function(utils)
+                    --     return utils.root_has_file({ "prettier.config.js", ".prettierrc", ".prettierrc.json" })
+                    -- end,
+                    extra_filetypes = { "svelte", ".config.js" },
                 }), -- js/ts formatter
                 formatting.stylua, -- lua formatter
                 formatting.isort,

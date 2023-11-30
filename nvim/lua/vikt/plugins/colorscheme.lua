@@ -72,7 +72,8 @@ return {
             -- #0f0f0f
             -- #030302
             -- local clr = "#030302"
-            local clr = "#0c0c0d"
+            -- local clr = "#0c0c0d"
+            local clr = "#0d001a"
             local bg = clr
             local bg_dark = clr
             -- #4A306D
@@ -82,7 +83,7 @@ return {
             local bg_search = "#0A64AC"
             local bg_visual = "#275378"
             -- local fg = "#CBE0F0"
-            -- local fg_dark = "#B4D0E9"
+            local fg_dark = "#B4D0E9"
             -- local fg_gutter = "#627E97"
             -- local border = "#547998"
             --
