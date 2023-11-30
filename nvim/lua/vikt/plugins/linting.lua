@@ -13,13 +13,12 @@ return {
         --     formatStdin = true,
         -- }
         lint.linters_by_ft = {
-            -- javascript = { "eslint_d" },
-            -- javascriptreact = { "eslint_d" },
-            -- ["javascript.jsx"] = { "eslint_d" },
-            -- typescript = { "eslint_d" },
-            -- ["typescript.tsx"] = { "eslint_d" },
-            -- typescriptreact = { "eslint_d" },
-            -- svelte = { "eslint_d" },
+            javascript = { "eslint_d" },
+            javascriptreact = { "eslint_d" },
+            ["javascript.jsx"] = { "eslint_d" },
+            typescript = { "eslint_d" },
+            ["typescript.tsx"] = { "eslint_d" },
+            typescriptreact = { "eslint_d" },
             python = { "pylint" },
         }
 

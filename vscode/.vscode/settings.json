@@ -15,7 +15,9 @@
   "notebook.output.textLineLimit": 200,
   "notebook.output.scrolling": true,
   "notebook.formatOnSave.enabled": true,
-  "editor.formatOnSave": true,
+  "[markdown]": {
+    "editor.formatOnPaste": true
+  },
   "[lua]": {
     "editor.defaultFormatter": "sumneko.lua"
   },
@@ -39,7 +41,7 @@
   "editor.foldingMaximumRegions": 65000,
   "terminal.integrated.mouseWheelScrollSensitivity": 0.2,
   "terminal.integrated.fontSize": 14,
-  "window.zoomLevel": 0,
+  "window.zoomLevel": -1,
   "editor.stickyTabStops": false,
   "editor.stickyScroll.enabled": true,
   "terminal.integrated.smoothScrolling": true,
@@ -57,7 +59,9 @@
   "python.analysis.typeCheckingMode": "basic",
   "python.linting.lintOnSave": true,
   "python.analysis.autoImportCompletions": true,
-  "python.analysis.fixAll": ["source.unusedImports"],
+  "python.analysis.fixAll": [
+    "source.unusedImports"
+  ],
   "python.analysis.completeFunctionParens": true,
   // "python.formatting.provider": "black",
   "python.analysis.autoFormatStrings": true,
@@ -68,7 +72,8 @@
     // "editor.defaultFormatter": "ms-python.python",
     "editor.formatOnSave": true,
     "editor.codeActionsOnSave": {
-      "source.organizeImports": true
+      "source.organizeImports": true,
+      "source.fixAll.markdownlint": true
     },
   },
   "isort.args": [

@@ -104,6 +104,7 @@ return {
     { "akinsho/toggleterm.nvim", version = "*", config = true },
     -- { "phaazon/hop.nvim", branch = "v2", lazy = true },
     { "smoka7/hop.nvim", version = "*" },
+    { "folke/flash.nvim", event = "VeryLazy" },
     { "eandrju/cellular-automaton.nvim", lazy = false },
     { "rcarriga/nvim-notify", lazy = true },
     { "kevinhwang91/nvim-hlslens", lazy = true },
@@ -133,7 +134,6 @@ return {
     -- ufo, for code folding
     { "kevinhwang91/nvim-ufo", dependencies = "kevinhwang91/promise-async" },
     { "tzachar/local-highlight.nvim" },
-    { "folke/flash.nvim", event = "VeryLazy" },
     {
         "ThePrimeagen/refactoring.nvim",
         dependencies = {

@@ -6,22 +6,21 @@ vim.g.rainbow_delimiters = {
         [""] = rainbow_delimiters.strategy["global"],
         vim = rainbow_delimiters.strategy["local"],
     },
+    blacklist = { "c", "html" },
     query = {
         [""] = "rainbow-delimiters",
         lua = "rainbow-blocks",
     },
     highlight = {
-        "RainbowDelimiterCyan",
-        "RainbowDelimiterViolet",
-        "RainbowDelimiterGreen",
         "RainbowDelimiterRed",
         "RainbowDelimiterYellow",
         "RainbowDelimiterBlue",
         "RainbowDelimiterOrange",
+        "RainbowDelimiterCyan",
+        "RainbowDelimiterViolet",
+        "RainbowDelimiterGreen",
     },
 }
 
 vim.g.matchup_matchparen_deferred = 1
-vim.g.matchup_matchparen_deferred = 1
 vim.g.matchup_matchparen_hi_surround_always = 1
--- vim.builtin.treesitter.matchup.enable = true
