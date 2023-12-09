@@ -18,7 +18,7 @@ conform.setup({
     },
     format_on_save = {
         lsp_fallback = true,
-        async = true,
+        async = false,
         timeout_ms = 500,
     },
 })
@@ -26,7 +26,7 @@ conform.setup({
 local function formatter()
     conform.format({
         lsp_fallback = true,
-        async = true,
+        async = false,
         timeout_ms = 500,
     })
 end

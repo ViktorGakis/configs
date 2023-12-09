@@ -41,7 +41,7 @@
   "editor.foldingMaximumRegions": 65000,
   "terminal.integrated.mouseWheelScrollSensitivity": 0.2,
   "terminal.integrated.fontSize": 14,
-  "window.zoomLevel": -1,
+  "window.zoomLevel": 0,
   "editor.stickyTabStops": false,
   "editor.stickyScroll.enabled": true,
   "terminal.integrated.smoothScrolling": true,
@@ -72,8 +72,8 @@
     // "editor.defaultFormatter": "ms-python.python",
     "editor.formatOnSave": true,
     "editor.codeActionsOnSave": {
-      "source.organizeImports": true,
-      "source.fixAll.markdownlint": true
+      "source.organizeImports": "explicit",
+      "source.fixAll.markdownlint": "explicit"
     },
   },
   "isort.args": [
