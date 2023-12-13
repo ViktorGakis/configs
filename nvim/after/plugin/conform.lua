@@ -16,17 +16,17 @@ conform.setup({
         lua = { "stylua" },
         python = { "isort", "black" },
     },
-    format_on_save = {
-        lsp_fallback = true,
-        async = false,
-        timeout_ms = 500,
-    },
+    -- format_on_save = {
+    --     lsp_fallback = true,
+    --     async = true,
+    --     timeout_ms = 500,
+    -- },
 })
 
 local function formatter()
     conform.format({
         lsp_fallback = true,
-        async = false,
+        async = true,
         timeout_ms = 500,
     })
 end
@@ -42,8 +42,8 @@ end
 
 local function formattingActions()
     -- vim.cmd("normal! ma")
-    vim.cmd("normal! kh")
-    feedEscapeKey()
+    -- vim.cmd("normal! kh")
+    -- feedEscapeKey()
     formatter()
 end
 
@@ -72,8 +72,15 @@ local function saveFormat_I()
     -- Optionally, you can return the success status and error message
     return success, errorMessage
 end
--- map("n", "<leader>fm", format_func, { desc = "LSP formatting" })
--- map("n", "<C-s>", "ma<ESC>kh<leader>mp<cmd>w<CR>`a", { desc = "Format and Save" })
+
+local map = vim.keymap.set
+local g = vim.g
+
+g.mapleader = " "
+g.maplocalleader = " "
+
+map("n", "<C-S>", saveFormat_N, { desc = "Format And Save" })
+-- map("n", "<C-s>", "ma<ESC>kh<leader>mp<cmd>w<CR>`a", { desc = "Format and Save" })format
 -- map("i", "<C-s>", "<ESC>ma<ESC>kh<leader>mp<cmd>w<CR>`a", { desc = "Format and Save" })
 --
 -- vim.keymap.set({ "n", "v" }, "<leader>mp", formatter, { desc = "Format file or range (in visual mode)" })
