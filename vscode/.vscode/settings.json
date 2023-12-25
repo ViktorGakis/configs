@@ -321,7 +321,10 @@
   "vscode-neovim.revealCursorScrollLine": false,
   "python.analysis.inlayHints.callArgumentNames": true,
   "notebook.stickyScroll.enabled": true,
-  "search.experimental.closedNotebookRichContentResults": true
+  "search.experimental.closedNotebookRichContentResults": true,
+  "cSpell.words": [
+    "datastructures"
+  ]
 }
 // https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-7.2
 // https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-7.2

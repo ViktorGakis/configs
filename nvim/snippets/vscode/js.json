@@ -1,18 +1,18 @@
 {
   "Print to console": {
-    "scope": "javascript,typescript,markdown,md",
+    "scope": "javascript,javascriptreact, typescript,markdown,md, js, jsx",
     "prefix": "cld",
     "body": ["console.log($1);"],
     "description": "Log output to console"
   },
   "Log to console": {
-    "scope": "javascript,typescript,markdown,md",
+    "scope": "javascript,javascriptreact, typescript,markdown,md, js, jsx",
     "prefix": "clf",
     "body": ["console.log(`$1: ${$1}`);"],
     "description": "Log output to console"
   },
   "Log to console clean": {
-    "scope": "javascript,typescript,markdown,md",
+    "scope": "javascript,javascriptreact, typescript,markdown,md, js, jsx",
     "prefix": "clc",
     "body": ["console.log('$1: ', $1);"],
     "description": "Log output to console"
