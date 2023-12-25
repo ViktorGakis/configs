@@ -178,6 +178,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
         lspkind.init({})
 
         require("luasnip.loaders.from_vscode").lazy_load()
+        require("luasnip.loaders.from_vscode").lazy_load({ paths = { "./snippets/vscode" } })
         require("luasnip.loaders.from_snipmate").lazy_load()
         require("lsp_lines").setup()
 

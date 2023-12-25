@@ -70,10 +70,11 @@ return {
             -- #060217
             -- #1a1a1a
             -- #0f0f0f
-            -- #030302
+            -- #030302 
+            -- #0d001a
             -- local clr = "#030302"
             -- local clr = "#0c0c0d"
-            local clr = "#0d001a"
+            local clr = "#0c0c0d"
             local bg = clr
             local bg_dark = clr
             -- #4A306D
